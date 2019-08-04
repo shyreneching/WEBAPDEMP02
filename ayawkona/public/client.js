@@ -3,12 +3,17 @@ $(function() {
     var pathHistory = []
     var toStart = false
     var data, start, goal
+    var starttime, endtime
   
     // loads preset list of articles for start and end
     function loadData() {
       return new Promise(function(resolve, reject) {
         console.log('loading things JSON...')
-        $.getJSON('https://cdn.glitch.com/40d55047-3eaa-44bf-ba59-73ebb3488dee%2Fthings.json?1522698967187', function(data) {
+        // $.getJSON('https://cdn.glitch.com/40d55047-3eaa-44bf-ba59-73ebb3488dee%2Fthings.json?1522698967187', function(data) {
+        //   console.log('loaded things!')
+        //   resolve(data)
+        // })
+        $.getJSON('links.json', function(data) {
           console.log('loaded things!')
           resolve(data)
         })
@@ -41,6 +46,8 @@ $(function() {
         return 
       }
       if (pathHistory[pathHistory.length-1].href === goal.href) {
+        endtime = new Date()
+        console.log(endtime)
         $('#winning-wrapper ul').empty()
         pathHistory.forEach(function(node, i) {
           $('#winning-wrapper ul').append(
@@ -49,6 +56,9 @@ $(function() {
               .css('background-color', generateColor())
           )
         })
+        let timeSpent = endtime - starttime
+        console.log(timeSpent)
+        $('#winning-wrapper span').text(Math.floor(timeSpent / 1000 / 60) + " minutes " + Math.round(timeSpent/1000%60) + " seconds")
         setActive(WINNING)
       }
     }
@@ -114,6 +124,8 @@ $(function() {
       pathHistory = []
       toStart = true
       setActive(HELP)
+      starttime = new Date()
+      console.log(starttime)
     }
     
     // request new list of links from backend

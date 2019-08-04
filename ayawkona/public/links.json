@@ -1,0 +1,20 @@
+{
+    "things": [
+        {
+            "text": "United States",
+            "href": "/wiki/United_States"
+        },
+        {
+            "text": "Japan",
+            "href": "/wiki/Japan"
+        },
+        {
+            "text": "Germany",
+            "href": "/wiki/Germany"
+        },
+        {
+            "text": "China",
+            "href": "/wiki/China"
+        }
+    ]
+}

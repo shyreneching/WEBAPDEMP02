@@ -120,6 +120,8 @@ function filterLinks(links) {
     filtered.push(item)
   }
   // console.log('number of articles: ', filtered.length)
+  // for(let i = 0; i < filtered.length; i++)
+  //   console.log(filtered[i].text + " " + filtered[i].href)
   return filtered
 }
 
