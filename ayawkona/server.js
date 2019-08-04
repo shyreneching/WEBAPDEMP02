@@ -1,14 +1,21 @@
 const express = require('express')
+const bodyparser = require("body-parser")
+const session = require("express-session")
+const cookieparser = require("cookie-parser")
+const mongoose = require("mongoose")
 const Request = require('request')
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom;
 
 const app = express()
+const urlencoder = bodyparser.urlencoded({
+  extended:false
+})
 
 app.use(express.static('public'))
 
 app.get('/', (request, response) => {
-  response.sendFile(__dirname + '/views/index.html')
+  response.sendFile(__dirname + '/views/guestview.hbs')
 })
 
 app.get('/articles', (request, response) => {
