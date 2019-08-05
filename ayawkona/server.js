@@ -15,7 +15,8 @@ const urlencoder = bodyparser.urlencoded({
 app.use(express.static('public'))
 
 app.get('/', (request, response) => {
-  response.sendFile(__dirname + '/views/guestview.hbs')
+  // response.sendFile(__dirname + '/views/guestview.hbs')
+  response.render('guestview.hbs',{})
 })
 
 app.get('/articles', (request, response) => {
