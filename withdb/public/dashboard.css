@@ -18,7 +18,8 @@
     src: url("../fonts/Lucy_Rounded.ttf");
 }
 
-html, body {
+html,
+body {
     padding: 0px;
     margin: 0px;
     height: 100%;
@@ -66,7 +67,7 @@ button:focus {
     user-select: none;
 }
 
-.navlink:hover{
+.navlink:hover {
     color: #b99d2d;
     transition: 1000ms;
     cursor: pointer;
@@ -98,13 +99,13 @@ button:focus {
     flex-direction: column;
 }
 
-.curr{
+.curr {
     position: absolute;
     font-family: 'Youre Gone';
     color: #f6c70d;
-    font-size: 3.2vw;
+    font-size: 2.5vw;
     /* text-align: center; */
-    left: 6.5vw;
+    left: 9.5vw;
     top: 1vw;
     -webkit-animation-name: larger;
     -webkit-animation-duration: 1.5s;
@@ -118,12 +119,12 @@ button:focus {
     }
 
     to {
-        left: 3vw;
+        left: 6.5vw;
         font-size: 4vw;
     }
 }
 
-.dets{
+.blurb {
     list-style-type: none;
     overflow: hidden;
     margin: 0px;
@@ -131,10 +132,16 @@ button:focus {
     width: 100%;
     position: relative;
     top: 12vw;
-    left: 2%;
+    align-self: center;
+    font-family: "Montserrat Light";
+    font-size: 1vw;
+    text-align: center;
+    font-weight: bold;
+    color: #41360c;
+    height: 30%;
 }
 
-.starting, .targeting {
+/* .starting, .targeting {
     padding-bottom: 2vw;
 }
 
@@ -199,7 +206,7 @@ button:focus {
     font-weight: bolder;
     color: rgb(94, 69, 37);
     font-size: 2.5vw;
-}
+} */
 
 .start_btn {
     background-color: #f6c70d;
@@ -213,17 +220,37 @@ button:focus {
     align-self: center;
     position: relative;
     top: 16vw;
-    transition: all;
-    transition: 300ms;
+    /* transition: all;
+    transition: 300ms; */
+    -webkit-animation-name: startlargerbtn;
+    -webkit-animation-duration: 600ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
 }
 
 .start_btn:hover {
-    width: 11vw;
-    height: 5vw;
+    /* width: 11vw;
+    height: 6vw;
     font-size: 2.2vw;
     top: 15.5vw;
-    transition: 500ms;
+    transition: 500ms; */
     cursor: pointer;
+}
+
+@-webkit-keyframes startlargerbtn {
+    from {
+        width: 15.5vw;
+        height: 5.5vw;
+        font-size: 3vw;
+        top: 14vw;
+    }
+
+    to {
+        width: 16vw;
+        height: 6vw;
+        font-size: 3.25vw;
+        top: 13.8vw;
+    }
 }
 
 .leaderboard {
@@ -290,14 +317,36 @@ button:focus {
     position: relative;
 }
 
-.content {
+.content_day {
     width: 100%;
     height: 90%;
     background-color: #ffe683;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
-}   
+    padding-top: 3vw
+}
+
+.content_week {
+    width: 100%;
+    height: 90%;
+    background-color: #ffe683;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3vw
+}
+
+.content_all_time {
+    width: 100%;
+    height: 90%;
+    background-color: #ffe683;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3vw
+}
+
 
 .top_5 {
     font-family: 'Youre Gone';
@@ -305,7 +354,11 @@ button:focus {
     color: #846e18;
 }
 
-.first, .second, .third, .fourth, .fifth {
+.first,
+.second,
+.third,
+.fourth,
+.fifth {
     margin-top: 0vw;
     margin-bottom: 0.5vw;
     width: 95%;
@@ -328,7 +381,10 @@ button:focus {
     left: 8%;
 }
 
-.number, .name, .dash, .points {
+.number,
+.name,
+.dash,
+.points {
     padding-right: 1.5vw;
     display: inline-block;
     left: 0.5vw;
@@ -419,7 +475,7 @@ button:focus {
     top: 8vw;
     background-color: #f6c70d;
     color: #41360c;
-    border-color: transparent;  
+    border-color: transparent;
     font-family: 'Youre Gone';
     transition: 500ms;
     cursor: pointer;
@@ -429,7 +485,7 @@ button:focus {
     -webkit-animation-direction: alternate;
 }
 
-.login_btn:hover{
+.login_btn:hover {
     width: 16vw;
     height: 6vw;
     font-size: 2.3vw;
@@ -438,15 +494,15 @@ button:focus {
 
 @-webkit-keyframes largerbtn {
     from {
-        width: 15vw;
-        height: 5vw;
+        width: 15.5vw;
+        height: 5.5vw;
         font-size: 2.2vw;
         top: 8vw;
     }
 
     to {
-        width: 15.5vw;
-        height: 5.5vw;
+        width: 16vw;
+        height: 6vw;
         font-size: 2.25vw;
         top: 7.8vw;
     }
@@ -463,6 +519,6 @@ button:focus {
     top: 8vw;
 }
 
-.signup_link:hover{
+.signup_link:hover {
     color: #846e18;
 }

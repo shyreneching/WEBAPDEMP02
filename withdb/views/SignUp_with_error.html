@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Wiki Game | Sign Up</title>
+    <script src="../public/jquery_3.3.1.js"></script>
+    <link rel="stylesheet" href="../public/signup.css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="../public/the_wiki_game_logo_gif.gif" alt="Logo Failed to Load"
+            style="position:relative; top: 1vw; bottom: 5vw; width: 25vw; height:15vw;">
+        <form action="" class="input_portion">
+            <input type="text" class="username_input" name="user" id="username" placeholder="username">
+            <input type="password" class="password_input" name="pww" id="password" placeholder="password">            
+            <input type="password" class="password_input" name="confirm_pww" id="confirm_password" placeholder="confirm password">            
+            <button class="signup_btn" id="signup" onclick="window.location.href = 'Dashboard.html'">SIGN UP</button>
+        </form>
+        <p class="warning_pw" id="warn_pw">Warning: Passwords don't match</p>
+        <p class="warning_user" id="warn_user">Warning: Username is already taken</p>
+        <a href="Dashboard.html" class="guest_login">Login as Guest</a>
+    </div>
+</body>
+
+</html>
