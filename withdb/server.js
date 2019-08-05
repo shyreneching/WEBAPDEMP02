@@ -27,14 +27,27 @@ mongoose.connect("mongodb://localhost:27017/wikigame", {
 })
 
 app.use(express.static('public'))
+app.use(session({
+  secret: "secret name",
+  name:"cookiename",
+  resave : true, //will receive the session id
+  saveUninitialized : true, // no session yet will be saved
+  cookie:{
+      maxAge: 1000*60*24*365*2
+  }
+}))
+
+app.use(cookieparser())
+
+
 
 app.get('/', (request, response) => {
   //.sort = sort time, .limit(5) = gets the smallest 5?
   var list = Leaderboard.find({}).sort({ time: 1 })
   .limit(5).then(leaderboard => leaderboard[0].time)
   // response.sendFile(__dirname + '/views/guestview.hbs')
-  if (!request.session.user) {
-    response.sendFile(__dirname + "/public/Login.html")
+  if (!request.session.username) {
+    response.sendFile(__dirname + "/views/Login.html")
   } else {
     respond.render("Dashboard.hbs", {
       list: docs
@@ -60,7 +73,7 @@ app.post("/signup", urlencoder, (request, respond)=>{
   var list = Leaderboard.find({}).sort({ time: 1 })
   .limit(5).then(leaderboard => leaderboard[0].time)
  //if same ung pangalan ng variable, pwede v for shortcut
-  let user = new User({
+  let user = new Account({
       username: username,
       
       password: password
