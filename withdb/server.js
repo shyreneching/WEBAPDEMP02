@@ -10,11 +10,11 @@ const {
 } = jsdom;
 
 const {
-  User
-} = require("./database.js")
+  Account
+} = require("./user.js")
 const {
   Leaderboard
-} = require("./database.js")
+} = require("./leaderboard.js")
 
 const app = express()
 const urlencoder = bodyparser.urlencoded({
