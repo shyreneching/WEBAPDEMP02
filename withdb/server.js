@@ -49,15 +49,42 @@ app.get('/', (request, response) => {
     .limit(5).then(leaderboard => leaderboard[0].time)
   // response.sendFile(__dirname + '/views/guestview.hbs')
   if (!request.session.username) {
-    response.sendFile(__dirname + "/views/Login.html")
+    // response.sendFile(__dirname + "/views/Login.html")
+    response.render("Login.hbs")
   } else {
+    console.log(list)
     if(list != null){
+      console.log("I have a list")
       response.render("Dashboard.hbs", {
-        list: docs
+        leaderboard: list
       })
     }else{
+      console.log("I don't")
       response.render("Dashboard.hbs")
     }
+  }
+})
+
+app.get("/profile", function(req, res){
+  if (!req.session.username) {
+    res.redirect("/")
+  } else {
+    let username = req.session.username;
+    Account.findOne({
+      username
+    }, (err, doc)=>{
+      if(err){
+        res.send(err)
+    }else if(doc){
+        console.log(doc)
+        res.render("profile.hbs", {
+          username: doc.username,
+          password: doc.password
+        })
+    }else{
+      res.redirect("/")
+    }
+    })
   }
 })
 
@@ -88,7 +115,7 @@ app.get("/leaderboard", function (request, response) {
     })
     .limit(20).then(leaderboard => leaderboard[0].time)
   response.render("Leaderboard.hbs", {
-    list: docs
+    leaderboard: list
   })
   //  res.session.destroy((err)=>{
   //     console.log("Error")
@@ -97,7 +124,25 @@ app.get("/leaderboard", function (request, response) {
 })
 
 app.get("/signup", (request, response) => {
-  response.sendFile(__dirname + "/views/SignUp.html")
+  // response.sendFile(__dirname + "/views/SignUp.html")
+  response.render("SignUp.hbs")
+})
+
+app.get("/dashboard", (request, response) => {
+  var list = Leaderboard.find({}).sort({
+    time: 1
+  })
+  .limit(5).then(leaderboard => leaderboard[0].time)
+  console.log(list)
+    if(list != null){
+      console.log("I have a list")
+      response.render("Dashboard.hbs", {
+        leaderboard: list
+      })
+    }else{
+      console.log("I don't")
+      response.render("Dashboard.hbs")
+    }
 })
 
 app.post("/createaccount", urlencoder, (request, response) => {
@@ -126,7 +171,7 @@ app.post("/createaccount", urlencoder, (request, response) => {
       //if all goes well
       if(list != null){
         response.render("Dashboard.hbs", {
-          list: doc
+          leaderboard: list
         })
       }else{
         response.render("Dashboard.hbs")

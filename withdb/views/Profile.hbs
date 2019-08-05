@@ -12,11 +12,11 @@
     <div class="navbar">
         <img src="the_wiki_game_logo_smaller_spaces.png" alt="Logo Failed to Load"
             style="width: 7.5vw; height:3vw; top: 0vw; cursor: pointer;"
-            onclick="window.location.href = 'Dashboard.html'">
+            onclick="window.location.href = '/dashboard'">
         <ul class="navul">
-            <li class="navlink" onclick="window.location.href = 'Dashboard.html'">HOME</li>
+            <li class="navlink" onclick="window.location.href = '/dashboard'">HOME</li>
             <li class="navlink">|</li>
-            <li class="navlink" onclick="window.location.href = 'Leaderboard.html'">LEADERBOARD</li>
+            <li class="navlink" onclick="window.location.href = '/leaderboard'">LEADERBOARD</li>
             <li class="navlink">|</li>
             <li class="navlink" id="profile" style="color: #46380b; font-weight: bold">PROFILE</li>
         </ul>
@@ -29,11 +29,11 @@
             </div>
 
             <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
-            <p class="username" id="user">JustinSeagull</p>
+            <p class="username" id="user">{{username}}</p>
         </div>
         <div class="pw_dets">
             <p class="pw_label">Password:</p>
-            <p class="password" id="pass">jungkook</p>
+            <p class="password" id="pass">{{password}}</p>
         </div>
         
     </div>

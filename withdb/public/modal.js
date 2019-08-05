@@ -13,7 +13,7 @@ if (hyperLinkText == "GUEST") {
     }
 } else if (hyperLinkText == "PROFILE") {
     link.onclick = function () {
-        window.location.href = "Profile.html"
+        window.location.href = "/profile"
     }
 }
 
