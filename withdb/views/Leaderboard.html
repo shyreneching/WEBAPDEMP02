@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Wiki Game | Leaderboard</title>
+    <script src="../public/jquery_3.3.1.js"></script>
+    <script src="../public/modal.js" defer></script>
+    <script src="../public/lead.js" defer></script>
+    <link rel="stylesheet" href="../public/leaderboard.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <img src="../public/the_wiki_game_logo_smaller_spaces.png" alt="Logo Failed to Load"
+            style="width: 7.5vw; height:3vw; top: 0vw; cursor: pointer;" onclick="window.location.href = 'Dashboard.html'">
+        <ul class="navul">
+            <li class="navlink" onclick="window.location.href = 'Dashboard.html'">HOME</li>
+            <li class="navlink">|</li>
+            <li class="navlink" style="color: #46380b; font-weight: bold"
+                onclick="window.location.href = 'Leaderboard.html'">LEADERBOARD</li>
+            <li class="navlink">|</li>
+            <li class="navlink" id="profile">GUEST</li>
+        </ul>
+    </div>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="contents">
+                <p style="font-family: 'Montserrat Light'; font-weight:bold; font-size: 2vw;">Want to record your
+                    progress?</p>
+                <button class="login_btn" id="loginbtn" onclick="window.location.href = 'Login.html'">LOGIN</button>
+                <p style="font-size:2vw; position:relative; top: 7vw; font-family: 'Montserrat Light';">OR</p>
+                <a class="signup_link" id="signuplink" onclick="window.location.href = 'SignUp.html'">SIGN UP</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+         <div class="leaderboard">
+             <div class="headers">
+                 <button class="day_hd" id="day">DAY</button>
+                 <button class="week_hd" id="week">WEEK</button>
+                 <button class="all_time_hd" id="all_time">ALL TIME</button>
+             </div>
+             <div class="content">
+                 <!-- <p class="top_5">TOP 5</p> -->
+                 <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                     <ul class="details">
+                         <li class="number">1.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_first">9000</li>
+                     </ul>
+                 </div>
+                 <div class="second">
+                     <ul class="details">
+                         <li class="number">2.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_second">9000</li>
+                     </ul>
+                 </div>
+                 <div class="third">
+                     <ul class="details">
+                         <li class="number">3.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_third">9000</li>
+                     </ul>
+                 </div>
+                 <div class="fourth">
+                     <ul class="details">
+                         <li class="number">4.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_fourth">9000</li>
+                     </ul>
+                 </div>
+                 <div class="fifth">
+                     <ul class="details">
+                         <li class="number">5.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_fifth">9000</li>
+                     </ul>
+                 </div>
+             </div>
+         </div>
+    </div>
+</body>
+</html>

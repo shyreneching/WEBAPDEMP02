@@ -1,0 +1,111 @@
+
+<html>
+  <head>
+    <title>Glitch Wikipedia Game</title>
+    <meta name="description" content="Glitch Wikipedia Game">
+    <link id="favicon" rel="icon" href="https://cdn.glitch.com/project-avatar/40d55047-3eaa-44bf-ba59-73ebb3488dee.png?1522399642862" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- help modal -->
+    <div id="help-wrapper" class="active">
+      <div id="help-modal">
+        <h2>
+          Wikipedia Game
+        </h2>
+        <p>
+          This is the <a href="https://en.wikipedia.org/wiki/Wikipedia:Wiki_Game">Wikipedia game</a> with a twist.
+          <br>
+          <br>
+          Your goal is to find a path from the starting article to the end article choosing the logical article links between. All start and end articles are selected from this <a href="https://en.wikipedia.org/wiki/Wikipedia:Multiyear_ranking_of_most_viewed_pages" target="_blank">list</a>.
+          <br>
+          <br>
+          <span id="start-help">[starting article]</span> 👉 <span id="goal-help">[end article]</span><span id="restart">🔄</span>
+          <br>
+          <br>
+          <div id="close-help" class="color-link">
+              Got it 👍
+          </div>
+          <br>
+          <!--           
+          <div class="color-link" >
+            <a target="_blank" href="https://glitch.com/edit/#!/remix/wikipedia-game">
+              Remix This 🎤
+            </a>
+          </div> 
+          -->
+          <hr>
+          <div class="color-link" >
+            <a target="_blank" href="https://glitch.com/edit/#!/wikipedia-game">
+              View Source 🔎
+            </a>
+          </div>
+          <p id="created-by">
+            created by <a target="_blank" href="http://danielgorelick.com">Dan Gorelick</a>
+          </p>
+        </p>
+      </div>
+    </div>
+    <!-- loading modal -->
+    <div id="loading-wrapper">
+      <img target="_blank" src="https://cdn.glitch.com/40d55047-3eaa-44bf-ba59-73ebb3488dee%2Fwiki_loading.gif?1522628423512">
+      <h2>
+        loading <span></span>...
+      </h2>
+    </div>
+    <!-- main content modal -->
+    <div id="main-wrapper">
+      <div id="info-wrapper">
+        <h1>
+          <span id="article-title">
+            <a target="_blank"></a>
+          </span>
+          <br>
+          <span id="point-right">👉</span>
+          <span id="point-goal">👍</span>
+          <span id="point-down">👇</span>
+          <span id="goal-title">
+            <a target="_blank"></a>
+          </span>
+        </h1>
+      </div>
+      <div id="winning-wrapper">
+        <h3>
+          Congratulations!
+        </h3>
+        <p>
+          The path you found: 
+        </p>
+        <ul>
+        </ul>
+        <p>You took: </p>
+        <span></span>
+        <div id="replay" class="color-link">
+          Again! 🎉
+        </div>
+      </div>
+      <div id="articles-wrapper">
+<!--         <h3>
+          Summary
+        </h3> -->
+        <p id="article-summary"></p>
+<!--         <h3>
+          Links
+        </h3> -->
+        <p id="articles-count"></p>
+        <ul id="articles"></ul>
+      </div>
+    </div>  
+    <!--  open help modal -->
+    <div id="help" class="color-link">
+      🤔
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="/client.js"></script>
+  </body>
+</html>
