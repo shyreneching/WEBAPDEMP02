@@ -7,6 +7,7 @@
     <title>The Wiki Game | Leaderboard</title>
     <script src="../public/jquery_3.3.1.js"></script>
     <script src="../public/modal.js" defer></script>
+    <script src="../public/lead.js" defer></script>
     <link rel="stylesheet" href="../public/leaderboard.css">
 </head>
 <body>
@@ -40,56 +41,56 @@
     </div>
 
     <div class="container">
-        <div class="leaderboard">
-            <div class="headers">
-                <button class="day_hd">DAY</button>
-                <button class="week_hd">WEEK</button>
-                <button class="all_time_hd">ALL TIME</button>
-            </div>
-            <div class="content">
-                <p class="top_5">TOP 5</p>
-                <div class="first" style="background-color: #fdf7db; height: 5vw;">
-                    <ul class="details">
-                        <li class="number">1.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="points_first">9000</li>
-                    </ul>
-                </div>
-                <div class="second">
-                    <ul class="details">
-                        <li class="number">2.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="points_second">9000</li>
-                    </ul>
-                </div>
-                <div class="third">
-                    <ul class="details">
-                        <li class="number">3.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="points_third">9000</li>
-                    </ul>
-                </div>
-                <div class="fourth">
-                    <ul class="details">
-                        <li class="number">4.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="points_fourth">9000</li>
-                    </ul>
-                </div>
-                <div class="fifth">
-                    <ul class="details">
-                        <li class="number">5.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="points_fifth">9000</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+         <div class="leaderboard">
+             <div class="headers">
+                 <button class="day_hd" id="day">DAY</button>
+                 <button class="week_hd" id="week">WEEK</button>
+                 <button class="all_time_hd" id="all_time">ALL TIME</button>
+             </div>
+             <div class="content">
+                 <!-- <p class="top_5">TOP 5</p> -->
+                 <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                     <ul class="details">
+                         <li class="number">1.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_first">9000</li>
+                     </ul>
+                 </div>
+                 <div class="second">
+                     <ul class="details">
+                         <li class="number">2.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_second">9000</li>
+                     </ul>
+                 </div>
+                 <div class="third">
+                     <ul class="details">
+                         <li class="number">3.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_third">9000</li>
+                     </ul>
+                 </div>
+                 <div class="fourth">
+                     <ul class="details">
+                         <li class="number">4.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_fourth">9000</li>
+                     </ul>
+                 </div>
+                 <div class="fifth">
+                     <ul class="details">
+                         <li class="number">5.</li>
+                         <li class="name" id="user_first">JustinSeagull</li>
+                         <li class="dash">-</li>
+                         <li class="points" id="time_fifth">9000</li>
+                     </ul>
+                 </div>
+             </div>
+         </div>
     </div>
 </body>
 </html>
