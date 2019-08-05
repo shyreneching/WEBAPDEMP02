@@ -105,10 +105,17 @@ app.post("/createaccount", urlencoder, (request, response) => {
   var password = request.body.pww
   var cpassword = request.body.confirm_pww
   var list = Leaderboard.find({}).sort({
-      time: 1
+    time: 1
     })
     .limit(5).then(leaderboard => leaderboard[0].time)
+    // time: 1
   //if same ung pangalan ng variable, pwede v for shortcut
+  let x = new Leaderboard({
+    username: username,
+    time: 300,
+    date: new Date()
+  })
+  x.save().then((doc)=>{})
   let user = new Account({
     username: username,
 
@@ -119,7 +126,7 @@ app.post("/createaccount", urlencoder, (request, response) => {
       //if all goes well
       if(list != null){
         response.render("Dashboard.hbs", {
-          list: docs
+          list: doc
         })
       }else{
         response.render("Dashboard.hbs")
