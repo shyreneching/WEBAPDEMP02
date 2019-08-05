@@ -11,10 +11,10 @@ const {
 
 const {
   Account
-} = require("./user.js")
+} = require("./model/user.js")
 const {
   Leaderboard
-} = require("./leaderboard.js")
+} = require("./model/leaderboard.js")
 
 const app = express()
 const urlencoder = bodyparser.urlencoded({
