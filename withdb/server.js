@@ -29,11 +29,11 @@ mongoose.connect("mongodb://localhost:27017/wikigame", {
 app.use(express.static('public'))
 app.use(session({
   secret: "secret name",
-  name:"cookiename",
-  resave : true, //will receive the session id
-  saveUninitialized : true, // no session yet will be saved
-  cookie:{
-      maxAge: 1000*60*24*365*2
+  name: "cookiename",
+  resave: true, //will receive the session id
+  saveUninitialized: true, // no session yet will be saved
+  cookie: {
+    maxAge: 1000 * 60 * 24 * 365 * 2
   }
 }))
 
@@ -43,22 +43,28 @@ app.use(cookieparser())
 
 app.get('/', (request, response) => {
   //.sort = sort time, .limit(5) = gets the smallest 5?
-  var list = Leaderboard.find({}).sort({ time: 1 })
-  .limit(5).then(leaderboard => leaderboard[0].time)
+  var list = Leaderboard.find({}).sort({
+      time: 1
+    })
+    .limit(5).then(leaderboard => leaderboard[0].time)
   // response.sendFile(__dirname + '/views/guestview.hbs')
   if (!request.session.username) {
     response.sendFile(__dirname + "/views/Login.html")
   } else {
-    respond.render("Dashboard.hbs", {
+    response.render("Dashboard.hbs", {
       list: docs
     })
   }
 })
 
-app.get("/leaderboard", function(request, respond){
-  var list = Leaderboard.find({}).sort({ time: 1 })
-  .limit(20).then(leaderboard => leaderboard[0].time)
-  respond.render("Leaderboard.hbs",{
+
+
+app.get("/leaderboard", function (request, response) {
+  var list = Leaderboard.find({}).sort({
+      time: 1
+    })
+    .limit(20).then(leaderboard => leaderboard[0].time)
+  response.render("Leaderboard.hbs", {
     list: docs
   })
   //  res.session.destroy((err)=>{
@@ -67,26 +73,40 @@ app.get("/leaderboard", function(request, respond){
   // res.redirect("/")
 })
 
-app.post("/signup", urlencoder, (request, respond)=>{
+app.get("/signup", (request, response) => {
+  response.sendFile(__dirname + "/views/SignUp.html")
+})
+
+app.post("/createaccount", urlencoder, (request, respond) => {
   var username = request.body.user
   var password = request.body.pww
-  var list = Leaderboard.find({}).sort({ time: 1 })
-  .limit(5).then(leaderboard => leaderboard[0].time)
- //if same ung pangalan ng variable, pwede v for shortcut
+  var cpassword = request.body.confirm_pww
+  var list = Leaderboard.find({}).sort({
+      time: 1
+    })
+    .limit(5).then(leaderboard => leaderboard[0].time)
+  //if same ung pangalan ng variable, pwede v for shortcut
   let user = new Account({
-      username: username,
-      
-      password: password
+    username: username,
+
+    password: password
   })
-  user.save().then((doc)=>{
+  if (password == cpassword) {
+    user.save().then((doc) => {
       //if all goes well
-      respond.render("Leaderboard.hbs",{
-        list: docs
-      })
-  }, (err)=>{
+      if(list != null){
+        respond.render("Dashboard.hbs", {
+          list: docs
+        })
+      }else{
+        respond.render("Dashboard.hbs")
+      }
+      
+    }, (err) => {
       //if it fails
       res.send(err)
-  })
+    })
+  }
 })
 
 app.get('/game', (request, response) => {
