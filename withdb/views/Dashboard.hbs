@@ -71,7 +71,7 @@
                 {{#each leaderboard}}
                 <div class="first" style="background-color: #fdf7db; height: 5vw;">
                     <ul class="details">
-                        <li class="number">1.</li>
+                        <li class="number">{{@key}}: {{this}}.</li>
                         <li class="name" id="user_first">{{username}}</li>
                         <li class="dash">-</li>
                         <li class="points" id="time_first">{{time}}</li>
