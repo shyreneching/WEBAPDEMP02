@@ -51,12 +51,35 @@ app.get('/', (request, response) => {
   if (!request.session.username) {
     response.sendFile(__dirname + "/views/Login.html")
   } else {
-    response.render("Dashboard.hbs", {
-      list: docs
-    })
+    if(list != null){
+      response.render("Dashboard.hbs", {
+        list: docs
+      })
+    }else{
+      response.render("Dashboard.hbs")
+    }
   }
 })
 
+app.post("/login", urlencoder, function(req, res){
+  let username = req.body.user
+  let password = req.body.pww
+  
+  Account.findOne({
+      username,
+      password
+  }, (err, doc)=>{
+      if(err){
+          res.send(err)
+      }else if(doc){
+          console.log(doc)
+          req.session.username = doc.username
+          res.redirect("/")
+      }else{
+          escape.send("user not found")
+      }
+  })   
+})
 
 
 app.get("/leaderboard", function (request, response) {
@@ -77,7 +100,7 @@ app.get("/signup", (request, response) => {
   response.sendFile(__dirname + "/views/SignUp.html")
 })
 
-app.post("/createaccount", urlencoder, (request, respond) => {
+app.post("/createaccount", urlencoder, (request, response) => {
   var username = request.body.user
   var password = request.body.pww
   var cpassword = request.body.confirm_pww
@@ -95,11 +118,11 @@ app.post("/createaccount", urlencoder, (request, respond) => {
     user.save().then((doc) => {
       //if all goes well
       if(list != null){
-        respond.render("Dashboard.hbs", {
+        response.render("Dashboard.hbs", {
           list: docs
         })
       }else{
-        respond.render("Dashboard.hbs")
+        response.render("Dashboard.hbs")
       }
       
     }, (err) => {
