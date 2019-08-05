@@ -114,9 +114,17 @@ app.get("/leaderboard", function (request, response) {
       time: 1
     })
     .limit(20).then(leaderboard => leaderboard[0].time)
-  response.render("Leaderboard.hbs", {
-    leaderboard: list
-  })
+    if(!request.session.username) {
+      response.render("Leaderboard.hbs", {
+        leaderboard: list,
+        nav: "GUEST"
+      })
+    } else {
+      response.render("Leaderboard.hbs", {
+        leaderboard: list,
+        nav: "PROFILE"
+      })
+    }
   //  res.session.destroy((err)=>{
   //     console.log("Error")
   //  })
@@ -134,15 +142,34 @@ app.get("/dashboard", (request, response) => {
   })
   .limit(5).then(leaderboard => leaderboard[0].time)
   console.log(list)
+  if(!request.session.username) {
     if(list != null){
       console.log("I have a list")
       response.render("Dashboard.hbs", {
-        leaderboard: list
+        leaderboard: list,
+        nav: "GUEST"
       })
     }else{
       console.log("I don't")
-      response.render("Dashboard.hbs")
+      response.render("Dashboard.hbs", {
+        nav: "GUEST"
+      })
     }
+  } else {
+    if(list != null){
+      console.log("I have a list")
+      response.render("Dashboard.hbs", {
+        leaderboard: list,
+        nav: "PROFILE"
+      })
+    }else{
+      console.log("I don't")
+      response.render("Dashboard.hbs", {
+        nav: "PROFILE"
+      })
+    }
+  }
+    
 })
 
 app.post("/createaccount", urlencoder, (request, response) => {
