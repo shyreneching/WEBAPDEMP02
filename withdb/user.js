@@ -6,5 +6,5 @@ var Account = mongoose.model("account",{
 })
 
 module.exports = {
-    User 
+    Account
 }
