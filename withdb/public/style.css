@@ -395,8 +395,7 @@ button:focus {
   content: "end article";
   position: absolute;
   font-size: 1.5vw;
-  transform: translate(-60px, 47px);
-  top: 28vw;
+  transform: translate(-60px, 65px);
   opacity: 0.6;
 }
 
