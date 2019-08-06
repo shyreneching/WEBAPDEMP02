@@ -21,6 +21,25 @@ const urlencoder = bodyparser.urlencoded({
   extended: false
 })
 
+
+// var exphbs = require('express-handlebars');
+// var hbs = exphbs.create({
+//     helpers: {
+//         number: function (count) { return count + 1 },
+//         time: function (timespent) {
+//             return Math.floor(timeSpent / 1000 / 60) + " min " + Math.round(timeSpent/1000%60) + " sec";
+//         }
+//     },
+//     defaultLayout: 'main',
+//     // partialsDir: ['views/partials/']
+// });
+// app.engine('handlebars', hbs.engine);
+// app.set('view engine', 'handlebars');
+// // app.set('views', path.join(__dirname, 'views'));
+
+
+
+
 mongoose.Promise = global.Promise
 mongoose.connect("mongodb://localhost:27017/wikigame", {
   useNewUrlParser: true
@@ -40,32 +59,36 @@ app.use(session({
 app.use(cookieparser())
 
 
-
 app.get('/', (request, response) => {
-  //.sort = sort time, .limit(5) = gets the smallest 5?
-  var list = Leaderboard.find({}).sort({
-      time: 1
+  Leaderboard.find({},
+    ['username','time','date'],
+    {
+      skip: 0, // Starting Row
+      limit: 5, // Ending Row
+      sort: {
+        time: 1 //Sort by Date Added ASCEN
+      }
+    },
+    function (err, list) {
+      console.log(list);
+      if (!request.session.username) {
+        // response.sendFile(__dirname + "/views/Login.html")
+        response.render("Login_no_error.hbs")
+      } else {
+        if (list != "") {
+          console.log("I have a list")
+          response.render("Dashboard.hbs", {
+            leaderboard: list,
+            nav: "PROFILE"
+          })
+        } else {
+          console.log("I don't")
+          response.render("Dashboard.hbs", {
+            nav: "PROFILE"
+          })
+        }
+      }
     })
-    .limit(5).then(leaderboard => leaderboard[0].time)
-  // response.sendFile(__dirname + '/views/guestview.hbs')
-  if (!request.session.username) {
-    // response.sendFile(__dirname + "/views/Login.html")
-    response.render("Login_no_error.hbs")
-  } else {
-    console.log(list)
-    if(list != null){
-      console.log("I have a list")
-      response.render("Dashboard.hbs", {
-        leaderboard: list,
-        nav: "PROFILE"
-      })
-    }else{
-      console.log("I don't")
-      response.render("Dashboard.hbs", {
-        nav: "PROFILE"
-      })
-    }
-  }
 })
 
 app.get("/profile", function(req, res){
@@ -140,39 +163,44 @@ app.get("/signup", (request, response) => {
 })
 
 app.get("/dashboard", (request, response) => {
-  var list = Leaderboard.find({}).sort({
-    time: 1
-  })
-  .limit(5).then(leaderboard => leaderboard[0].time)
-  console.log(list)
-  if(!request.session.username) {
-    if(list != null){
-      console.log("I have a list")
-      response.render("Dashboard.hbs", {
-        leaderboard: list,
-        nav: "GUEST"
-      })
-    }else{
-      console.log("I don't")
-      response.render("Dashboard.hbs", {
-        nav: "GUEST"
-      })
-    }
-  } else {
-    if(list != null){
-      console.log("I have a list")
-      response.render("Dashboard.hbs", {
-        leaderboard: list,
-        nav: "PROFILE"
-      })
-    }else{
-      console.log("I don't")
-      response.render("Dashboard.hbs", {
-        nav: "PROFILE"
-      })
-    }
-  }
-    
+  Leaderboard.find({},
+    ['username','time','date'],
+    {
+      skip: 0, // Starting Row
+      limit: 5, // Ending Row
+      sort: {
+        time: 1 //Sort by Date Added ASCEN
+      }
+    },
+    function (err, list) {
+      if(!request.session.username) {
+        if(list != null){
+          console.log("I have a list")
+          response.render("Dashboard.hbs", {
+            leaderboard: list,
+            nav: "GUEST"
+          })
+        }else{
+          console.log("I don't")
+          response.render("Dashboard.hbs", {
+            nav: "GUEST"
+          })
+        }
+      } else {
+        if(list != null){
+          console.log("I have a list")
+          response.render("Dashboard.hbs", {
+            leaderboard: list,
+            nav: "PROFILE"
+          })
+        }else{
+          console.log("I don't")
+          response.render("Dashboard.hbs", {
+            nav: "PROFILE"
+          })
+        }
+      }
+    })    
 })
 
 app.post("/again", urlencoder, (req, res)=>{
