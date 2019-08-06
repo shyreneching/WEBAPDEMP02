@@ -234,6 +234,12 @@ app.get('/game', (request, response) => {
   response.render('guestview.hbs', {})
 })
 
+app.get("/logout", function(request, response){
+  response.render("Login_no_error.hbs")
+  request.session.username = null
+})
+
+
 app.get('/articles', (request, response) => {
   const baseUrl = 'https://en.wikipedia.org';
   let article = request.query.article
