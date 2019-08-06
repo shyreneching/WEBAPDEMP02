@@ -50,7 +50,7 @@ app.get('/', (request, response) => {
   // response.sendFile(__dirname + '/views/guestview.hbs')
   if (!request.session.username) {
     // response.sendFile(__dirname + "/views/Login.html")
-    response.render("Login.hbs")
+    response.render("Login_no_error.hbs")
   } else {
     console.log(list)
     if(list != null){
@@ -106,7 +106,7 @@ app.post("/login", urlencoder, function(req, res){
           req.session.username = doc.username
           res.redirect("/")
       }else{
-          escape.send("user not found")
+          res.render("Login.hbs")
       }
   })   
 })
@@ -185,32 +185,47 @@ app.post("/createaccount", urlencoder, (request, response) => {
     .limit(5).then(leaderboard => leaderboard[0].time)
     // time: 1
   //if same ung pangalan ng variable, pwede v for shortcut
-  let x = new Leaderboard({
-    username: username,
-    time: 300,
-    date: new Date()
-  })
-  x.save().then((doc)=>{})
+  // let x = new Leaderboard({
+  //   username: username,
+  //   time: 300,
+  //   date: new Date()
+  // })
+  // x.save().then((doc)=>{})
   let user = new Account({
     username: username,
 
     password: password
   })
   if (password == cpassword) {
-    user.save().then((doc) => {
-      //if all goes well
-      if(list != null){
-        response.render("Dashboard.hbs", {
-          leaderboard: list
-        })
-      }else{
-        response.render("Dashboard.hbs")
-      }
-      
-    }, (err) => {
-      //if it fails
-      res.send(err)
-    })
+    Account.findOne({
+        username
+    }, (err, doc)=>{
+        if(err){
+            res.send(err)
+        }else if(doc){
+            response.render("SignUp_with_error.hbs")
+        }else{
+          user.save().then((doc) => {
+            //if all goes well
+            if(list != null){
+              response.render("Dashboard.hbs", {
+                leaderboard: list,
+                nav: "PROFILE"
+              })
+            }else{
+              response.render("Dashboard.hbs",{
+                nav: "PROFILE"
+              })
+            }
+            
+          }, (err) => {
+            //if it fails
+            res.send(err)
+          })
+        }
+    })   
+  } else {
+    response.render("SignUp_with_error.hbs")
   }
 })
 
