@@ -28,15 +28,16 @@ function ChangeLinkName(){
         console.log(localStorage.getItem("whyy"));
         some = localStorage.getItem("whyy");
         console.log(some);
-        if (some == "GUEST") {
+        if (some == "GUEST" || (document.getElementById("profile")).textContent == "GUEST") {
             profilelink.onclick = function () {
+                console.log("clicked here")
                 modal.style.display = "block";
-                modal.style.zIndex = "6";
+                modal.style.zIndex = "10";
             }
         } 
         else if (some == "PROFILE") {
             profilelink.onclick = function () {
-                window.location.href = "Profile.html"
+                window.location.href = "/profile"
             }
         }
 
@@ -70,7 +71,7 @@ function ChangeLinkName(){
             }
         } else if (some == "PROFILE") {
             profilelink.onclick = function () {
-                window.location.href = "Profile.html"
+                window.location.href = "/profile"
             }
         }
 
@@ -98,12 +99,12 @@ console.log(some);
 if (some == "GUEST") {
     profilelink.onclick = function () {
         modal.style.display = "block";
-        modal.style.zIndex = "6";
+        modal.style.zIndex = "10";
     }
 } 
 else if (some == "PROFILE") {
     profilelink.onclick = function () {
-        window.location.href = "Profile.html"
+        window.location.href = "/profile"
     }
 }
 

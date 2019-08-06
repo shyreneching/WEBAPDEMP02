@@ -512,3 +512,130 @@ li a:visited {
     font-size: 0.9em;
   }
 }
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #ffe988;
+  margin: 5% auto;
+  /* 15% from the top and centered */
+  padding: 10px;
+  border: transparent;
+  width: 50%;
+  height: 30vw;
+  /* Could be more or less, depending on screen size */
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+@keyframes animatetop {
+  from {
+      top: -300px;
+      opacity: 0
+  }
+
+  to {
+      top: 0;
+      opacity: 1
+  }
+}
+
+/* The Close Button */
+.close {
+  color: #41360c;
+  float: right;
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contents {
+  position: relative;
+  top: 2vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.login_btn {
+  position: absolute;
+  width: 15vw;
+  height: 5vw;
+  font-size: 2.2vw;
+  top: 8vw;
+  background-color: #f6c70d;
+  color: #41360c;
+  border-color: transparent;
+  font-family: 'Youre Gone';
+  transition: 500ms;
+  cursor: pointer;
+  -webkit-animation-name: largerbtn;
+  -webkit-animation-duration: 600ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+}
+
+.login_btn:hover {
+  width: 16vw;
+  height: 6vw;
+  font-size: 2.3vw;
+  top: 7.5vw;
+}
+
+@-webkit-keyframes largerbtn {
+  from {
+      width: 15.5vw;
+      height: 5.5vw;
+      font-size: 2.2vw;
+      top: 8vw;
+  }
+
+  to {
+      width: 16vw;
+      height: 6vw;
+      font-size: 2.25vw;
+      top: 7.8vw;
+  }
+}
+
+.signup_link {
+  font-family: 'Youre Gone';
+  color: #41360c;
+  font-size: 2.5vw;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: 400ms;
+  position: relative;
+  top: 8vw;
+}
+
+.signup_link:hover {
+  color: #846e18;
+}

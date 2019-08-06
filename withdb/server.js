@@ -175,6 +175,20 @@ app.get("/dashboard", (request, response) => {
     
 })
 
+app.post("/again", urlencoder, (req, res)=>{
+  var time = req.body.time
+  let x = new Leaderboard({
+    username: request.session.username,
+    time: time,
+    date: new Date()
+  })
+  x.save().then((doc) => {
+    res.redirect("/game")
+  }, (err) => {
+    res.send(err)
+  })
+})
+
 app.post("/createaccount", urlencoder, (request, response) => {
   var username = request.body.user
   var password = request.body.pww
@@ -231,7 +245,15 @@ app.post("/createaccount", urlencoder, (request, response) => {
 
 app.get('/game', (request, response) => {
   // response.sendFile(__dirname + '/views/guestview.hbs')
-  response.render('guestview.hbs', {})
+  if (!request.session.username) {
+    response.render('guestview.hbs', {
+      nav: "GUEST"
+    })
+  } else {
+    response.render('guestview.hbs', {
+      nav: "PROFILE"
+    })
+  }
 })
 
 app.get("/logout", function(request, response){

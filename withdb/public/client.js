@@ -170,7 +170,9 @@ $(function() {
       restart(data)
     })
     $('#replay').on('click', function() {
-      restart(data)
+      $("#time").val(timeSpent)
+      $("#timeform").submit();
+      // restart(data)
     })
   
     // help modal
