@@ -1,111 +1,218 @@
-
 <html>
-  <head>
-    <title>Glitch Wikipedia Game</title>
-    <meta name="description" content="Glitch Wikipedia Game">
-    <link id="favicon" rel="icon" href="https://cdn.glitch.com/project-avatar/40d55047-3eaa-44bf-ba59-73ebb3488dee.png?1522399642862" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/style.css">
+
+<head>
+  <title>The Wiki Game | Game</title>
+  <meta name="description" content="Glitch Wikipedia Game">
+  <link id="favicon" rel="icon"
+    href="https://cdn.glitch.com/project-avatar/40d55047-3eaa-44bf-ba59-73ebb3488dee.png?1522399642862"
+    type="image/x-icon">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="jquery_3.3.1.js"></script>
+  {{!-- <script src="loginn.js" defer></script> --}}
+  <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    <!-- help modal -->
-    <div id="help-wrapper" class="active">
-      <div id="help-modal">
-        <h2>
-          Wikipedia Game
-        </h2>
-        <p>
-          This is the <a href="https://en.wikipedia.org/wiki/Wikipedia:Wiki_Game">Wikipedia game</a> with a twist.
-          <br>
-          <br>
-          Your goal is to find a path from the starting article to the end article choosing the logical article links between. All start and end articles are selected from this <a href="https://en.wikipedia.org/wiki/Wikipedia:Multiyear_ranking_of_most_viewed_pages" target="_blank">list</a>.
-          <br>
-          <br>
-          <span id="start-help">[starting article]</span> 👉 <span id="goal-help">[end article]</span><span id="restart">🔄</span>
-          <br>
-          <br>
-          <div id="close-help" class="color-link">
-              Got it 👍
-          </div>
-          <br>
-          <!--           
+</head>
+
+<body>
+
+  <div class="navbar">
+    <img src="the_wiki_game_logo_smaller_spaces.png" alt="Logo Failed to Load"
+      style="width: 7.5vw; height:3vw; top: 0vw; cursor: pointer;" onclick="window.location.href = 'Dashboard.html'">
+    <ul class="navul">
+      <li class="navlink" onclick="window.location.href = '/dashboard'">HOME</li>
+      <li class="navlink">|</li>
+      <li class="navlink" onclick="window.location.href = '/leaderboard'">LEADERBOARD</li>
+      <li class="navlink">|</li>
+      <li class="navlink" id="profile">{{nav}}</li>
+    </ul>
+  </div>
+
+  <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="contents">
+                <p style="font-family: 'Montserrat Light'; font-weight:bold; font-size: 2vw;">Want to record your progress?</p>
+                <button class="login_btn" id="loginbtn" onclick="window.location.href = '/'">LOGIN</button>
+                <p style="font-size:2vw; position:relative; top: 7vw; font-family: 'Montserrat Light';">OR</p>
+                <a class="signup_link" id="signuplink" onclick="window.location.href = '/signup'">SIGN UP</a>
+            </div>
+        </div>
+
+    </div>
+
+  <div class="container">
+    <div class="divisoria">
+      <div class="display_words">
+        <img src="randomiser_icon.png" alt="Icon failed to Load" id="restart" class="random"></img>
+        <ul class="dets">
+          <li class="starting">
+            <ul class="start">
+              <li class="st">START:</li>
+              <li class="st_word" id="startword">
+                <span id="start-help" class="start">[starting article]</span>
+              </li>
+            </ul>
+          </li>
+          <li class="targeting">
+            <ul class="target">
+              <li class="tg">TARGET:</li>
+              <li class="tg_word" id="targetword">
+                <span id="goal-help" class="target">[end article]</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    
+    
+    
+      <div id="close-help" class="color-link">
+        PLAY
+      </div>
+    </div>
+  <!-- help modal -->
+  {{!-- <div id="help-wrapper" class="active">
+    <div id="help-modal">
+      <h2>
+        Wikipedia Game
+      </h2>
+      <p>
+        This is the <a href="https://en.wikipedia.org/wiki/Wikipedia:Wiki_Game">Wikipedia game</a> with a twist.
+        <br>
+        <br>
+        Your goal is to find a path from the starting article to the end article choosing the logical article links
+        between. All start and end articles are selected from this <a
+          href="https://en.wikipedia.org/wiki/Wikipedia:Multiyear_ranking_of_most_viewed_pages"
+          target="_blank">list</a>.
+        <br>
+        <br>
+        <span id="start-help">[starting article]</span> 👉 <span id="goal-help">[end article]</span><span
+          id="restart">🔄</span>
+        <br>
+        <br>
+        <div id="close-help" class="color-link">
+          Got it 👍
+        </div>
+        <br> --}}
+        <!--           
           <div class="color-link" >
             <a target="_blank" href="https://glitch.com/edit/#!/remix/wikipedia-game">
               Remix This 🎤
             </a>
           </div> 
           -->
-          <hr>
-          <div class="color-link" >
-            <a target="_blank" href="https://glitch.com/edit/#!/wikipedia-game">
-              View Source 🔎
-            </a>
-          </div>
-          <p id="created-by">
-            created by <a target="_blank" href="http://danielgorelick.com">Dan Gorelick</a>
-          </p>
-        </p>
-      </div>
-    </div>
-    <!-- loading modal -->
-    <div id="loading-wrapper">
-      <img target="_blank" src="https://cdn.glitch.com/40d55047-3eaa-44bf-ba59-73ebb3488dee%2Fwiki_loading.gif?1522628423512">
-      <h2>
-        loading <span></span>...
-      </h2>
-    </div>
-    <!-- main content modal -->
-    <div id="main-wrapper">
-      <div id="info-wrapper">
-        <h1>
-          <span id="article-title">
-            <a target="_blank"></a>
-          </span>
-          <br>
-          <span id="point-right">👉</span>
-          <span id="point-goal">👍</span>
-          <span id="point-down">👇</span>
-          <span id="goal-title">
-            <a target="_blank"></a>
-          </span>
-        </h1>
-      </div>
-      <div id="winning-wrapper">
-        <h3>
-          Congratulations!
-        </h3>
-        <p>
-          The path you found: 
-        </p>
-        <ul>
-        </ul>
-        <p>You took: </p>
-        <span></span>
-        <div id="replay" class="color-link">
-          Again! 🎉
+        {{!-- <hr>
+        <div class="color-link">
+          <a target="_blank" href="https://glitch.com/edit/#!/wikipedia-game">
+            View Source 🔎
+          </a>
         </div>
+        <p id="created-by">
+          created by <a target="_blank" href="http://danielgorelick.com">Dan Gorelick</a>
+        </p>
+      </p>
+    </div>
+  </div> --}}
+  <!-- loading modal -->
+  <div id="loading-wrapper">
+    <img target="_blank"
+      src="https://cdn.glitch.com/40d55047-3eaa-44bf-ba59-73ebb3488dee%2Fwiki_loading.gif?1522628423512">
+    <h2>
+      loading <span></span>...
+    </h2>
+  </div>
+  <!-- main content modal -->
+  <div id="main-wrapper">
+    <div id="info-wrapper">
+      <h1>
+        <span id="article-title">
+          <a target="_blank"></a>
+        </span>
+        <br>
+        <span id="point-right">👉</span>
+        <span id="point-goal">👍</span>
+        <span id="point-down">👇</span>
+        <span id="goal-title">
+          <a target="_blank"></a>
+        </span>
+      </h1>
+    </div>
+    <div id="winning-wrapper">
+      <h3>
+        Congratulations!
+      </h3>
+      <p>
+        The path you found:
+      </p>
+      <ul>
+      </ul>
+      <p>You took: </p>
+      <br>
+      <span class="timesp"></span>
+      <br>
+      <div id="replay" class="color-link">
+        Done!
       </div>
-      <div id="articles-wrapper">
-<!--         <h3>
+      <form id="timeform" method="POST" action="again">
+        <input type="hidden" name="time" id="time">
+      </form>
+    </div>
+    <div id="articles-wrapper">
+      <!--         <h3>
           Summary
         </h3> -->
-        <p id="article-summary"></p>
-<!--         <h3>
+      <p id="article-summary"></p>
+      <!--         <h3>
           Links
         </h3> -->
-        <p id="articles-count"></p>
-        <ul id="articles"></ul>
-      </div>
-    </div>  
-    <!--  open help modal -->
-    <div id="help" class="color-link">
-      🤔
+      <p id="articles-count"></p>
+      <ul id="articles"></ul>
     </div>
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
-    <script src="/client.js"></script>
-  </body>
+  </div>
+  <!--  open help modal -->
+  {{!-- <div id="help" class="color-link">
+    🤔
+  </div> --}}
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+    integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+  <script src="/client.js"></script>
+
+  <script>
+    var prof = document.getElementById("profile");
+
+    var modal = document.getElementById("myModal");
+
+
+    if (prof.textContent == "PROFILE"){
+      prof.onclick = function() {
+          window.location.href = '/profile';
+        }
+    } else {
+      prof.onclick= function(){
+        console.log("clicked here")
+                modal.style.display = "block";
+                modal.style.zIndex = "10";
+      }
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    
+  </script>
+</body>
+
 </html>
