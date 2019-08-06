@@ -189,6 +189,7 @@ $(function() {
         setActive(MAIN)
       }
       checkWinCondition()
+      $(".divisoria").css('display', 'none')
     })
   
     // set link colors
