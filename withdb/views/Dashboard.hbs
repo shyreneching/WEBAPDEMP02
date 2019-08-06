@@ -72,7 +72,7 @@
                 <button class="week_hd" id="week">WEEK</button>
                 <button class="all_time_hd" id="all_time">ALL TIME</button>
             </div>
-            <div class="content">
+            <div class="content_day" id="day_dets">
                 <p class="top_5">TOP 5</p>
                 {{#each leaderboard}}
                 <div class="first" style="background-color: #fdf7db; height: 5vw;">
@@ -84,39 +84,37 @@
                     </ul>
                 </div>
                    {{/each}}
-                {{!-- <div class="second">
-                    <ul class="details">
-                        <li class="number">2.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="time_second">9000</li>
-                    </ul>
-                </div>
-                <div class="third">
-                    <ul class="details">
-                        <li class="number">3.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="time_third">9000</li>
-                    </ul>
-                </div>
-                <div class="fourth">
-                    <ul class="details">
-                        <li class="number">4.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="time_fourth">9000</li>
-                    </ul>
-                </div>
-                <div class="fifth">
-                    <ul class="details">
-                        <li class="number">5.</li>
-                        <li class="name" id="user_first">JustinSeagull</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="time_fifth">9000</li>
-                    </ul>
-                </div> --}}
             </div>
+
+            <div class="content_week" id="week_dets">
+                <p class="top_5">TOP 5</p>
+                {{#each leaderboard}}
+                <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                    <ul class="details">
+                        <li class="number">{{@key}}: {{this}}.</li>
+                        <li class="name" id="user_first">{{username}}</li>
+                        <li class="dash">-</li>
+                        <li class="points" id="time_first">{{time}}</li>
+                    </ul>
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="content_all_time" id="all_time_dets">
+                <p class="top_5">TOP 5</p>
+                {{#each leaderboard}}
+                <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                    <ul class="details">
+                        <li class="number">{{@key}}: {{this}}.</li>
+                        <li class="name" id="user_first">{{username}}</li>
+                        <li class="dash">-</li>
+                        <li class="points" id="time_first">{{time}}</li>
+                    </ul>
+                </div>
+                {{/each}}
+            </div>
+
+
         </div>
     </div>
 
