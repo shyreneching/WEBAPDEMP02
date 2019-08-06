@@ -89,10 +89,14 @@
                 {{#each leaderboard}}
                 <div class="first" style="background-color: #fdf7db; height: 5vw;">
                     <ul class="details">
-                        <li class="number">{{@key}}.</li>
+                        <li class="number" data-id="{{_id}}_key">{{@key}}.</li>
                         <li class="name" id="user_first">{{username}}</li>
                         <li class="dash">-</li>
-                        <li class="points" id="time_first">{{time}}</li>
+                        <li class="points" data-id="{{_id}}"></li>
+                        <script>
+                            $("li[data-id={{_id}}]").text(Math.floor({{time}} / 1000 / 60) + " min " + Math.round({{time}}/1000%60) + " sec")
+                            $("li[data-id={{_id}}_key]").text(({{@key}} + 1) + ".")
+                        </script>
                     </ul>
                 </div>
                 {{/each}}
