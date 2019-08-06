@@ -56,11 +56,14 @@ app.get('/', (request, response) => {
     if(list != null){
       console.log("I have a list")
       response.render("Dashboard.hbs", {
-        leaderboard: list
+        leaderboard: list,
+        nav: "PROFILE"
       })
     }else{
       console.log("I don't")
-      response.render("Dashboard.hbs")
+      response.render("Dashboard.hbs", {
+        nav: "PROFILE"
+      })
     }
   }
 })
