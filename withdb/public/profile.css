@@ -152,3 +152,30 @@ button:focus {
     position: relative;
     margin-left: 2vw;
 }
+
+.logoutdiv {
+    position: relative;
+    top: 5vw;
+}
+
+.logout_btn {
+    width: 17vw;
+    height: 4vw;
+    border-color: transparent;
+    background-color: #41360c;
+    color: #ffe57d;
+    font-family: 'Youre Gone';
+    font-size: 2vw;
+    transition: 500ms;
+    position: relative;
+    top: 0vw;
+}
+
+.logout_btn:hover {
+    /* width: 20.5vw;
+    height: 5.5vw;
+    font-size: 3.2vw;
+    margin-top:-0.1vw;  */
+    background-color: #2c2508;
+    cursor: pointer;
+}

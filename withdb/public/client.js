@@ -152,7 +152,7 @@ $(function() {
           var color = generateColor()
           $('ul#articles').append(
             $('<li/>')
-              .append($('<a/>', {text: article.text, href: '/#' + article.href}))
+              .append($('<a/>', {text: article.text, href: '/game#' + article.href}))
               .hover(function(e) {
                 $(this).css('background-color',e.type === 'mouseenter'? color :'transparent') 
               })

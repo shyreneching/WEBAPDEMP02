@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Glitch Wikipedia Game</title>
+  <title>The Wiki Game | Game</title>
   <meta name="description" content="Glitch Wikipedia Game">
   <link id="favicon" rel="icon"
     href="https://cdn.glitch.com/project-avatar/40d55047-3eaa-44bf-ba59-73ebb3488dee.png?1522399642862"
@@ -9,12 +9,56 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/style.css">
+  <script src="jquery_3.3.1.js"></script>
+  <script src="loginn.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  </head>
 </head>
 
 <body>
+
+  <div class="navbar">
+    <img src="the_wiki_game_logo_smaller_spaces.png" alt="Logo Failed to Load"
+      style="width: 7.5vw; height:3vw; top: 0vw; cursor: pointer;" onclick="window.location.href = 'Dashboard.html'">
+    <ul class="navul">
+      <li class="navlink" onclick="window.location.href = '/dashboard'">HOME</li>
+      <li class="navlink">|</li>
+      <li class="navlink" onclick="window.location.href = '/leaderboard'">LEADERBOARD</li>
+      <li class="navlink">|</li>
+      <li class="navlink" id="profile">{{nav}}</li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="display_words">
+      <img src="randomiser_icon.png" alt="Icon failed to Load" id="restart" class="random"></img>
+      <ul class="dets">
+        <li class="starting">
+          <ul class="start">
+            <li class="st">START:</li>
+            <li class="st_word" id="startword">
+              <span id="start-help" class="start">[starting article]</span>
+            </li>
+          </ul>
+        </li>
+        <li class="targeting">
+          <ul class="target">
+            <li class="tg">TARGET:</li>
+            <li class="tg_word" id="targetword">
+              <span id="goal-help" class="target">[end article]</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  
+  
+  
+    <div id="close-help" class="color-link">
+      PLAY
+    </div>
   <!-- help modal -->
-  <div id="help-wrapper" class="active">
+  {{!-- <div id="help-wrapper" class="active">
     <div id="help-modal">
       <h2>
         Wikipedia Game
@@ -36,7 +80,7 @@
         <div id="close-help" class="color-link">
           Got it 👍
         </div>
-        <br>
+        <br> --}}
         <!--           
           <div class="color-link" >
             <a target="_blank" href="https://glitch.com/edit/#!/remix/wikipedia-game">
@@ -44,7 +88,7 @@
             </a>
           </div> 
           -->
-        <hr>
+        {{!-- <hr>
         <div class="color-link">
           <a target="_blank" href="https://glitch.com/edit/#!/wikipedia-game">
             View Source 🔎
@@ -55,7 +99,7 @@
         </p>
       </p>
     </div>
-  </div>
+  </div> --}}
   <!-- loading modal -->
   <div id="loading-wrapper">
     <img target="_blank"
@@ -108,9 +152,9 @@
     </div>
   </div>
   <!--  open help modal -->
-  <div id="help" class="color-link">
+  {{!-- <div id="help" class="color-link">
     🤔
-  </div>
+  </div> --}}
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"
     integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
   <script src="/client.js"></script>
