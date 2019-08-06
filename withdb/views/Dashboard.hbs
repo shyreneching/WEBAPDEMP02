@@ -54,12 +54,14 @@
                 <p class="curr">WITH A TWIST!</p>
             </div>
             <div class="blurb">
-                <p>
-                    The Wiki Game with a TWIST! <br>
-                    This game is a spin on the game 'Wikigame'. The goal of this game is to get from the starting
-                    article of Wikipedia to the ending article. Each article has links to multiple other articles. Using
-                    this links, the player must be able to arrive at the ending article.
-                </p>
+                <div class="format">
+                    <p>
+                        The Wiki Game with a TWIST! <br>
+                        This game is a spin on the game 'Wikigame'. The goal of this game is to get from the starting
+                        article of Wikipedia to the ending article. Each article has links to multiple other articles. Using
+                        this links, the player must be able to arrive at the ending article.
+                    </p>
+                </div>
             </div>
             {{!-- <ul class="dets">
                 <li class="starting">
@@ -84,61 +86,68 @@
                 <button class="week_hd" id="week">WEEK</button>
                 <button class="all_time_hd" id="all_time">ALL TIME</button>
             </div>
-            <div class="content_day" id="day_dets">
-                <p class="top_5">TOP 5</p>
-                {{#each leaderboard}}
-                <div class="first" style="background-color: #fdf7db; height: 5vw;">
-                    <ul class="details">
-                        <li class="number" data-id="{{_id}}_key">{{@key}}.</li>
-                        <li class="name" id="user_first">{{username}}</li>
-                        <li class="dash">-</li>
-                        <li class="points" data-id="{{_id}}"></li>
-                        <script>
-                            $("li[data-id={{_id}}]").text(Math.floor({{time}} / 1000 / 60) + " min " + Math.round({{time}}/1000%60) + " sec")
-                            $("li[data-id={{_id}}_key]").text(({{@key}} + 1) + ".")
-                        </script>
-                    </ul>
-                </div>
-                {{/each}}
-                <script>
-                    var x = []
+            <div class="content">
+                <div class="content_day" id="day_dets">
+                    <p class="top_5">TOP 5</p>
                     {{#each leaderboard}}
-                    x.push({
-                        username: "{{username}}",
-                        time: {{time}}
-                    })
+                    <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                        <ul class="details">
+                            <li class="number" data-id="{{_id}}_key">{{@key}}.</li>
+                            <li class="name" id="user_first">{{username}}</li>
+                            <li class="dash">-</li>
+                            <li class="points" data-id="{{_id}}"></li>
+                            <script>
+                                $("li[data-id={{_id}}]").text(Math.floor({{ time }} / 1000 / 60) + " min " + Math.round({{ time }}/1000%60) + " sec")
+                                            $("li[data-id={{_id}}_key]").text(({{@key}} + 1) + ".")
+                            </script>
+                        </ul>
+                    </div>
                     {{/each}}
-                    console.log(x)
-                </script>
+                    <script>
+                        var x = []
+                        { { #each leaderboard } }
+                        x.push({
+                            username: "{{username}}",
+                            time: {{ time }}
+                                    })
+                        {
+                            {
+                                /each}}
+                                console.log(x)
+                    </script>
+                </div>
+
+                <div class="content_week" id="week_dets">
+                    <p class="top_5">TOP 5</p>
+                    {{#each leaderboard}}
+                    <div class="first" style="background-colo   r: #fdf7db; height: 5vw;">
+                        <ul class="details">
+                            <li class="number">{{@key}}: {{this}}.</li>
+                            <li class="name" id="user_first">{{username}}</li>
+                            <li class="dash">-</li>
+                            <li class="points" id="time_first">{{time}}</li>
+                        </ul>
+                    </div>
+                    {{/each}}
+                </div>
+                
+                <div class="content_all_time" id="all_time_dets">
+                    <p class="top_5">TOP 5</p>
+                    {{#each leaderboard}}
+                    <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                        <ul class="details">
+                            <li class="number">{{@key}}: {{this}}.</li>
+                            <li class="name" id="user_first">{{username}}</li>
+                            <li class="dash">-</li>
+                            <li class="points" id="time_first">{{time}}</li>
+                        </ul>
+                    </div>
+                    {{/each}}
+                </div>
+                
             </div>
 
-            <div class="content_week" id="week_dets">
-                <p class="top_5">TOP 5</p>
-                {{#each leaderboard}}
-                <div class="first" style="background-colo   r: #fdf7db; height: 5vw;">
-                    <ul class="details">
-                        <li class="number">{{@key}}: {{this}}.</li>
-                        <li class="name" id="user_first">{{username}}</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="time_first">{{time}}</li>
-                    </ul>
-                </div>
-                {{/each}}
-            </div>
-
-            <div class="content_all_time" id="all_time_dets">
-                <p class="top_5">TOP 5</p>
-                {{#each leaderboard}}
-                <div class="first" style="background-color: #fdf7db; height: 5vw;">
-                    <ul class="details">
-                        <li class="number">{{@key}}: {{this}}.</li>
-                        <li class="name" id="user_first">{{username}}</li>
-                        <li class="dash">-</li>
-                        <li class="points" id="time_first">{{time}}</li>
-                    </ul>
-                </div>
-                {{/each}}
-            </div>
+            
 
 
         </div>

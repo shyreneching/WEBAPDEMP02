@@ -179,3 +179,21 @@ button:focus {
     background-color: #2c2508;
     cursor: pointer;
 }
+
+.besttimediv {
+    position: relative;
+    top: 8vw;
+    display: inline-flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 0px auto;
+    justify-items: center;
+    justify-content: center;
+}
+
+.bestTime {
+    font-family: "Youre Gone";
+    font-size: 3vw;
+    color: #2c2508;
+    margin-left: 3vw;
+}
