@@ -176,17 +176,22 @@ app.get("/dashboard", (request, response) => {
 })
 
 app.post("/again", urlencoder, (req, res)=>{
-  var time = req.body.time
-  let x = new Leaderboard({
-    username: request.session.username,
-    time: time,
-    date: new Date()
-  })
-  x.save().then((doc) => {
+  if (!req.session.username) {
     res.redirect("/game")
-  }, (err) => {
-    res.send(err)
-  })
+  } else {
+    var time = req.body.time
+    let x = new Leaderboard({
+      username: req.session.username,
+      time: time,
+      date: new Date()
+    })
+    x.save().then((doc) => {
+      res.redirect("/game")
+    }, (err) => {
+      res.send(err)
+    })
+  }
+  
 })
 
 app.post("/createaccount", urlencoder, (request, response) => {

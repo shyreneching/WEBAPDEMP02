@@ -3,7 +3,7 @@ $(function() {
     var pathHistory = []
     var toStart = false
     var data, start, goal
-    var starttime, endtime
+    var starttime, endtime, timeSpent
   
     // loads preset list of articles for start and end
     function loadData() {
@@ -56,9 +56,9 @@ $(function() {
               .css('background-color', generateColor())
           )
         })
-        let timeSpent = endtime - starttime
+        timeSpent = endtime - starttime
         console.log(timeSpent)
-        $('#winning-wrapper span').text(Math.floor(timeSpent / 1000 / 60) + " minutes " + Math.round(timeSpent/1000%60) + " seconds")
+        $('#winning-wrapper span').text(Math.floor(timeSpent / 1000 / 60) + " min " + Math.round(timeSpent/1000%60) + " sec")
         setActive(WINNING)
       }
     }

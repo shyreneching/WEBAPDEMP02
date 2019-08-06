@@ -639,3 +639,9 @@ li a:visited {
 .signup_link:hover {
   color: #846e18;
 }
+
+.timesp {
+  font-family: 'Youre Gone';
+  color: #41360c;
+  font-size: 2.5vw;
+}
