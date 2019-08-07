@@ -124,8 +124,8 @@ $(function() {
       pathHistory = []
       toStart = true
       setActive(HELP)
-      starttime = new Date()
-      console.log(starttime)
+      // starttime = new Date()
+      // console.log(starttime)
     }
     
     // request new list of links from backend
@@ -182,6 +182,8 @@ $(function() {
   
     // close help modal
     $('#close-help').on('click', function() {
+      starttime = new Date()
+      console.log(starttime)
       if (toStart) {
         // request first article
         location.hash = start.href

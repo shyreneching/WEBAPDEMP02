@@ -219,10 +219,15 @@ router.get('/', (request, response) => {
     var username = request.body.user
     var password = request.body.pww
     var cpassword = request.body.confirm_pww
-    var list = Leaderboard.find({}).sort({
-      time: 1
+    var temp;
+      Leaderboard.find({},(err, list)=>{
+          if(err) {
+              res.send(err)
+          } else {
+              console.log(list)
+              temp = list;
+          }
       })
-      .limit(5).then(leaderboard => leaderboard[0].time)
       // time: 1
     //if same ung pangalan ng variable, pwede v for shortcut
     // let x = new Leaderboard({
@@ -246,10 +251,11 @@ router.get('/', (request, response) => {
               response.render("SignUp_with_error.hbs")
           }else{
             user.save().then((doc) => {
+                request.session.username = username
               //if all goes well
-              if(list != null){
+              if(temp != ""){
                 response.render("Dashboard.hbs", {
-                  leaderboard: list,
+                  leaderboard: temp,
                   nav: "PROFILE"
                 })
               }else{
