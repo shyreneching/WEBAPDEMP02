@@ -8,6 +8,21 @@
     <script src="modal.js" defer></script>
     <script src="lead.js" defer></script>
     <link rel="stylesheet" href="leaderboard.css">
+    <script>
+        function compare(a, b) {
+            const timeA = a.time
+            const timeB = b.time
+
+            let comparison = 0;
+            if(timeA > timeB) {
+                comparison = 1
+            } else if (timeA < timeB) {
+                comparison = -1
+            }
+
+            return comparison
+        }
+    </script>
 </head>
 <body>
 
@@ -46,7 +61,182 @@
                  <button class="week_hd" id="week">WEEK</button>
                  <button class="all_time_hd" id="all_time">ALL TIME</button>
              </div>
-             <div class="content_day">
+             <div class="content">
+                <div class="content_day" id="day_dets">
+                    {{!-- <p class="top_5">TOP 5</p> --}}
+                    {{!-- {{#each leaderboard}} --}}
+                    {{!-- <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                        <ul class="details">
+                            <li class="number" data-id="{{_id}}_key">{{@key}}.</li>
+                            <li class="name" id="user_first">{{username}}</li>
+                            <li class="dash">-</li>
+                            <li class="points" data-id="{{_id}}"></li>
+                            <script>
+                                $("li[data-id={{_id}}]").text(Math.floor({{ time }} / 1000 / 60) + " min " + Math.round({{ time }}/1000%60) + " sec")
+                                            $("li[data-id={{_id}}_key]").text(({{@key}} + 1) + ".")
+                            </script>
+                        </ul>
+                    </div> --}}
+                    {{!-- {{/each}} --}}
+                </div>
+
+                <div class="content_week" id="week_dets">
+                    <p class="top_5">TOP 5</p>
+                    {{!-- {{#each leaderboard}}
+                    <div class="first" style="background-colo   r: #fdf7db; height: 5vw;">
+                        <ul class="details">
+                            <li class="number">{{@key}}: {{this}}.</li>
+                            <li class="name" id="user_first">{{username}}</li>
+                            <li class="dash">-</li>
+                            <li class="points" id="time_first">{{time}}</li>
+                        </ul>
+                    </div>
+                    {{/each}} --}}
+                </div>
+                
+                <div class="content_all_time" id="all_time_dets">
+                    <p class="top_5">TOP 5</p>
+                    {{!-- {{#each leaderboard}}
+                    <div class="first" style="background-color: #fdf7db; height: 5vw;">
+                        <ul class="details">
+                            <li class="number">{{@key}}: {{this}}.</li>
+                            <li class="name" id="user_first">{{username}}</li>
+                            <li class="dash">-</li>
+                            <li class="points" id="time_first">{{time}}</li>
+                        </ul>
+                    </div>
+                    {{/each}} --}}
+                </div>
+                <script>
+                    var x = []
+                    let temp = new Date();
+                    {{#each leaderboard}}
+                    temp.setTime({{date}})
+                    x.push({
+                        username: "{{username}}",
+                        time: {{time}},
+                        date: temp
+                    })
+                    {{/each}}
+                    x.sort(compare)
+                    console.log(x)
+                    let now = new Date()
+                    var daily = []
+                    for(var i = 0; i < x.length; i++){
+                        if(x[i].date.getDate() == now.getDate() && x[i].date.getFullYear() == now.getFullYear()) {
+                            daily.push(x[i])
+                        }
+                    }
+                    console.log(daily)
+                    var monthly = []
+                    for(var i = 0; i < x.length; i++){
+                        if(x[i].date.getMonth() == now.getMonth() && x[i].date.getFullYear() == now.getFullYear()) {
+                            monthly.push(x[i])
+                        }
+                    }
+                    console.log(monthly)
+
+                    for(var i = 0; i < daily.length; i++) {
+                        var container, ul, li1, li2, li3, li4
+                        container = document.createElement("div")
+                        container.className = "first"
+                        $(container).css("background-color", "#fdf7db")
+                        $(container).css("height", "5vw")
+                        $("#day_dets").append(container)
+
+                        ul = document.createElement("ul")
+                        ul.className = "details"
+                        container.append(ul)
+
+                        li1 = document.createElement("li")
+                        li1.className = "number"
+                        $(li1).text((i + 1) + ".")
+                        ul.append(li1)
+
+                        li2 = document.createElement("li")
+                        li2.className = "name"
+                        $(li2).text(daily[i].username)
+                        ul.append(li2)
+
+                        li3 = document.createElement("li")
+                        li3.className = "dash"
+                        $(li3).text("-")
+                        ul.append(li3)
+
+                        li4 = document.createElement("li")
+                        li4.className = "points"
+                        $(li4).text(Math.floor(daily[i].time / 1000 / 60) + " min " + Math.round(daily[i].time/1000%60) + " sec")
+                        ul.append(li4)
+                    }
+
+                    for(var i = 0; i < monthly.length; i++) {
+                        var container, ul, li1, li2, li3, li4
+                        container = document.createElement("div")
+                        container.className = "first"
+                        $(container).css("background-color", "#fdf7db")
+                        $(container).css("height", "5vw")
+                        $("#week_dets").append(container)
+
+                        ul = document.createElement("ul")
+                        ul.className = "details"
+                        container.append(ul)
+
+                        li1 = document.createElement("li")
+                        li1.className = "number"
+                        $(li1).text((i + 1) + ".")
+                        ul.append(li1)
+
+                        li2 = document.createElement("li")
+                        li2.className = "name"
+                        $(li2).text(monthly[i].username)
+                        ul.append(li2)
+
+                        li3 = document.createElement("li")
+                        li3.className = "dash"
+                        $(li3).text("-")
+                        ul.append(li3)
+
+                        li4 = document.createElement("li")
+                        li4.className = "points"
+                        $(li4).text(Math.floor(monthly[i].time / 1000 / 60) + " min " + Math.round(monthly[i].time/1000%60) + " sec")
+                        ul.append(li4)
+                    }
+
+                    for(var i = 0; i < x.length; i++) {
+                        var container, ul, li1, li2, li3, li4
+                        container = document.createElement("div")
+                        container.className = "first"
+                        $(container).css("background-color", "#fdf7db")
+                        $(container).css("height", "5vw")
+                        $("#all_time_dets").append(container)
+
+                        ul = document.createElement("ul")
+                        ul.className = "details"
+                        container.append(ul)
+
+                        li1 = document.createElement("li")
+                        li1.className = "number"
+                        $(li1).text((i + 1) + ".")
+                        ul.append(li1)
+
+                        li2 = document.createElement("li")
+                        li2.className = "name"
+                        $(li2).text(x[i].username)
+                        ul.append(li2)
+
+                        li3 = document.createElement("li")
+                        li3.className = "dash"
+                        $(li3).text("-")
+                        ul.append(li3)
+
+                        li4 = document.createElement("li")
+                        li4.className = "points"
+                        $(li4).text(Math.floor(x[i].time / 1000 / 60) + " min " + Math.round(x[i].time/1000%60) + " sec")
+                        ul.append(li4)
+                    }
+                </script>
+            </div>
+             {{!-- <div class="content_day">
                  <!-- <p class="top_5">TOP 5</p> -->
                  <div class="first" style="background-color: #fdf7db; height: 5vw;">
                      <ul class="details">
@@ -88,7 +278,7 @@
                          <li class="points" id="time_fifth">9000</li>
                      </ul>
                  </div>
-             </div>
+             </div> --}}
          </div>
     </div>
 </body>

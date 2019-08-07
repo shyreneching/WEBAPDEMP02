@@ -8,6 +8,21 @@
     <script src="jquery_3.3.1.js"></script>
     <script src="loginn.js"></script>
     <link rel="stylesheet" href="profile.css">
+    <script>
+        function compare(a, b) {
+            const timeA = a.time
+            const timeB = b.time
+
+            let comparison = 0;
+            if(timeA > timeB) {
+                comparison = 1
+            } else if (timeA < timeB) {
+                comparison = -1
+            }
+
+            return comparison
+        }
+    </script>
 </head>
 <body>
     <div class="navbar">
@@ -45,6 +60,31 @@
             <p style="font-family: 'Montserrat Light'; font-size: 3vw; color:#46380b; ">Best Time: </p>
             <p class="bestTime" id="best">1010</p>
         </div>
+        <script>
+            var x = []
+            let temp = new Date();
+            {{#each leaderboard}}
+            temp.setTime({{date}})
+            x.push({
+                username: "{{username}}",
+                time: {{time}},
+                date: temp
+            })
+            {{/each}}
+            x.sort(compare)
+            console.log(x)
+            let m = []
+            for(var i = 0; i < x.length; i++){
+                if(x[i].username == "{{username}}") {
+                    m.push(x[i])
+                }
+            }
+            if (m.length == 0) {
+                $("#best").text("N/A")
+            } else {
+                $("#best").text(Math.floor(m[0].time / 1000 / 60) + " min " + Math.round(m[0].time/1000%60) + " sec")
+            }
+        </script>
         
     </div>
 

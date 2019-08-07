@@ -59,6 +59,15 @@ router.get('/', (request, response) => {
   })
   
   router.get("/profile", function(req, res){
+      var temp;
+      Leaderboard.find({},(err, list)=>{
+          if(err) {
+              res.send(err)
+          } else {
+              console.log(list)
+              temp = list;
+          }
+      })
     if (!req.session.username) {
       res.redirect("/")
     } else {
@@ -72,7 +81,8 @@ router.get('/', (request, response) => {
           console.log(doc)
           res.render("profile.hbs", {
             username: doc.username,
-            password: doc.password
+            password: doc.password,
+            leaderboard: temp
           })
       }else{
         res.redirect("/")
@@ -103,26 +113,36 @@ router.get('/', (request, response) => {
   
   
   router.get("/leaderboard", function (request, response) {
-    var list = Leaderboard.find({}).sort({
-        time: 1
-      })
-      .limit(20).then(leaderboard => leaderboard[0].time)
-      if(!request.session.username) {
-        response.render("Leaderboard.hbs", {
-          leaderboard: list,
-          nav: "GUEST"
-        })
-      } else {
-        response.render("Leaderboard.hbs", {
-          leaderboard: list,
-          nav: "PROFILE"
-        })
-      }
+    Leaderboard.find({},
+    //     ).sort({
+    //     time: 1
+    //   })
+    //   .limit(20).then(leaderboard => leaderboard[0].time)
+    function(err, list) {
+        if(err) {
+            response.send(err)
+        }else {
+            console.log(list);
+            if(!request.session.username) {
+                response.render("Leaderboard.hbs", {
+                  leaderboard: list,
+                  nav: "GUEST"
+                })
+              } else {
+                response.render("Leaderboard.hbs", {
+                  leaderboard: list,
+                  nav: "PROFILE"
+                })
+              }
+        }
+    })
+    })
+      
     //  res.session.destroy((err)=>{
     //     console.log("Error")
     //  })
     // res.redirect("/")
-  })
+//   })
   
   router.get("/signup", (request, response) => {
     // response.sendFile(__dirname + "/views/SignUp.html")
@@ -131,42 +151,47 @@ router.get('/', (request, response) => {
   
   router.get("/dashboard", (request, response) => {
     Leaderboard.find({},
-      ['username','time','date'],
-      {
-        skip: 0, // Starting Row
-        limit: 5, // Ending Row
-        sort: {
-          time: 1 //Sort by Date Added ASCEN
-        }
-      },
+    //   ['username','time','date'],
+    //   {
+    //     skip: 0, // Starting Row
+    //     limit: 5, // Ending Row
+    //     sort: {
+    //       time: 1 //Sort by Date Added ASCEN
+    //     }
+    //   },
       function (err, list) {
-        if(!request.session.username) {
-          if(list != null){
-            console.log("I have a list")
-            response.render("Dashboard.hbs", {
-              leaderboard: list,
-              nav: "GUEST"
-            })
-          }else{
-            console.log("I don't")
-            response.render("Dashboard.hbs", {
-              nav: "GUEST"
-            })
+          if(err) {
+              response.send(err)
+          } else {
+            if(!request.session.username) {
+                if(list != null){
+                  console.log("I have a list")
+                  response.render("Dashboard.hbs", {
+                    leaderboard: list,
+                    nav: "GUEST"
+                  })
+                }else{
+                  console.log("I don't")
+                  response.render("Dashboard.hbs", {
+                    nav: "GUEST"
+                  })
+                }
+              } else {
+                if(list != null){
+                  console.log("I have a list")
+                  response.render("Dashboard.hbs", {
+                    leaderboard: list,
+                    nav: "PROFILE"
+                  })
+                }else{
+                  console.log("I don't")
+                  response.render("Dashboard.hbs", {
+                    nav: "PROFILE"
+                  })
+                }
+            }
           }
-        } else {
-          if(list != null){
-            console.log("I have a list")
-            response.render("Dashboard.hbs", {
-              leaderboard: list,
-              nav: "PROFILE"
-            })
-          }else{
-            console.log("I don't")
-            response.render("Dashboard.hbs", {
-              nav: "PROFILE"
-            })
-          }
-        }
+        
       })    
   })
   
