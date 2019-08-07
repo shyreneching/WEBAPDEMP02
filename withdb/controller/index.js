@@ -24,33 +24,37 @@ const router = express.Router();
 
 router.get('/', (request, response) => {
     Leaderboard.find({},
-      ['username','time','date'],
-      {
-        skip: 0, // Starting Row
-        limit: 5, // Ending Row
-        sort: {
-          time: 1 //Sort by Date Added ASCEN
-        }
-      },
+    //   ['username','time','date'],
+    //   {
+    //     skip: 0, // Starting Row
+    //     limit: 5, // Ending Row
+    //     sort: {
+    //       time: 1 //Sort by Date Added ASCEN
+    //     }
+    //   },
       function (err, list) {
-        console.log(list);
-        if (!request.session.username) {
-          // response.sendFile(__dirname + "/views/Login.html")
-          response.render("Login_no_error.hbs")
-        } else {
-          if (list != "") {
-            console.log("I have a list")
-            response.render("Dashboard.hbs", {
-              leaderboard: list,
-              nav: "PROFILE"
-            })
+          if(err) {
+              res.send(err)
           } else {
-            console.log("I don't")
-            response.render("Dashboard.hbs", {
-              nav: "PROFILE"
-            })
-          }
-        }
+                console.log(list);
+                if (!request.session.username) {
+                // response.sendFile(__dirname + "/views/Login.html")
+                response.render("Login_no_error.hbs")
+                } else {
+                if (list != "") {
+                    console.log("I have a list")
+                    response.render("Dashboard.hbs", {
+                    leaderboard: list,
+                    nav: "PROFILE"
+                    })
+                } else {
+                    console.log("I don't")
+                    response.render("Dashboard.hbs", {
+                    nav: "PROFILE"
+                    })
+                }
+                }
+            }
       })
   })
   
@@ -171,10 +175,11 @@ router.get('/', (request, response) => {
       res.redirect("/game")
     } else {
       var time = req.body.time
+      let temp = new Date()
       let x = new Leaderboard({
         username: req.session.username,
         time: time,
-        date: new Date()
+        date: temp.getTime()
       })
       x.save().then((doc) => {
         res.redirect("/game")

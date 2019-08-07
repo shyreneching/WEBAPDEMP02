@@ -331,7 +331,7 @@ button:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 3vw
+    padding-top: 1vw
 }
 
 .content_day {
