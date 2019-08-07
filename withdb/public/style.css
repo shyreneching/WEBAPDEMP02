@@ -240,7 +240,8 @@ button:focus {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: #fff7d2;
+  /* background-color: white; */
   padding: 50px 0;
   display: none;
 }
