@@ -33,13 +33,14 @@ body {
   width: 100%;
   /* background-color: #ebebeb; */
   background-color: #fff7d2;
-  overflow-y: scroll;
+  
 
 }
 
 body {
   font-family: helvetica, arial, sans-serif;
   color: #222;
+  /* overflow-y: scroll; */
 }
 
 .random {

@@ -189,6 +189,8 @@ button:focus {
     margin: 0px auto;
     justify-items: center;
     justify-content: center;
+    border-top: 5px;
+    border-top-color: #b99d2d;
 }
 
 .bestTime {
