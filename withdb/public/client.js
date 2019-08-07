@@ -170,7 +170,12 @@ $(function() {
       restart(data)
     })
     $('#replay').on('click', function() {
+      var x = []
+      for(var i = 0; i < pathHistory.length; i++){
+        x.push(pathHistory[i].text)
+      }
       $("#time").val(timeSpent)
+      $("#path").val(x)
       $("#timeform").submit();
       // restart(data)
     })

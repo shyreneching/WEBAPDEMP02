@@ -58,7 +58,7 @@
          <div class="leaderboard">
              <div class="headers">
                  <button class="day_hd" id="day">DAY</button>
-                 <button class="week_hd" id="week">WEEK</button>
+                 <button class="week_hd" id="week">MONTH</button>
                  <button class="all_time_hd" id="all_time">ALL TIME</button>
              </div>
              <div class="content">
@@ -110,12 +110,15 @@
                 <script>
                     var x = []
                     let temp = new Date();
+                    var y
                     {{#each leaderboard}}
                     temp.setTime({{date}})
+                    y = ("{{path}}").split(",")
                     x.push({
                         username: "{{username}}",
                         time: {{time}},
-                        date: temp
+                        date: temp,
+                        path: y
                     })
                     {{/each}}
                     x.sort(compare)

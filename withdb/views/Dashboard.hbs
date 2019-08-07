@@ -150,12 +150,15 @@
                 <script>
                     var x = []
                     let temp = new Date();
+                    var y
                     {{#each leaderboard}}
                     temp.setTime({{date}})
+                    y = ("{{path}}").split(",")
                     x.push({
                         username: "{{username}}",
                         time: {{time}},
-                        date: temp
+                        date: temp,
+                        path: y
                     })
                     {{/each}}
                     x.sort(compare)

@@ -204,7 +204,8 @@ router.get('/', (request, response) => {
       let x = new Leaderboard({
         username: req.session.username,
         time: time,
-        date: temp.getTime()
+        date: temp.getTime(),
+        path: req.body.path
       })
       x.save().then((doc) => {
         res.redirect("/game")
