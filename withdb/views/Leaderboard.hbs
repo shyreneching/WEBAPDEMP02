@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="content_week" id="week_dets">
-                    <p class="top_5">TOP 5</p>
+                    {{!-- <p class="top_5">TOP 5</p> --}}
                     {{!-- {{#each leaderboard}}
                     <div class="first" style="background-colo   r: #fdf7db; height: 5vw;">
                         <ul class="details">
@@ -95,7 +95,7 @@
                 </div>
                 
                 <div class="content_all_time" id="all_time_dets">
-                    <p class="top_5">TOP 5</p>
+                    {{!-- <p class="top_5">TOP 5</p> --}}
                     {{!-- {{#each leaderboard}}
                     <div class="first" style="background-color: #fdf7db; height: 5vw;">
                         <ul class="details">
@@ -108,16 +108,34 @@
                     {{/each}} --}}
                 </div>
                 <script>
+
+                    $("#day").click(()=>{
+                        $("#day_dets").css("display", "inline")
+                        $("#week_dets").css("display", "none")
+                        $("#all_time_dets").css("display", "none")
+                    })
+                    $("#week").click(()=>{
+                        $("#day_dets").css("display", "none")
+                        $("#week_dets").css("display", "inline")
+                        $("#all_time_dets").css("display", "none")
+                    })
+                    $("#all_time").click(()=>{
+                        $("#day_dets").css("display", "none")
+                        $("#week_dets").css("display", "none")
+                        $("#all_time_dets").css("display", "inline")
+                    })
+
                     var x = []
-                    let temp = new Date();
+                    {{!-- let temp = new Date(); --}}
                     var y
                     {{#each leaderboard}}
-                    temp.setTime({{date}})
+                    let abc{{_id}} = new Date()
+                    abc{{_id}}.setTime({{date}})
                     y = ("{{path}}").split(",")
                     x.push({
                         username: "{{username}}",
                         time: {{time}},
-                        date: temp,
+                        date: abc{{_id}},
                         path: y
                     })
                     {{/each}}

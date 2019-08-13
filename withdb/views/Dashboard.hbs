@@ -148,6 +148,23 @@
                     {{/each}} --}}
                 </div>
                 <script>
+
+                    $("#day").click(()=>{
+                        $("#day_dets").css("display", "flex")
+                        $("#week_dets").css("display", "none")
+                        $("#all_time_dets").css("display", "none")
+                    })
+                    $("#week").click(()=>{
+                        $("#day_dets").css("display", "none")
+                        $("#week_dets").css("display", "flex")
+                        $("#all_time_dets").css("display", "none")
+                    })
+                    $("#all_time").click(()=>{
+                        $("#day_dets").css("display", "none")
+                        $("#week_dets").css("display", "none")
+                        $("#all_time_dets").css("display", "flex")
+                    })
+
                     var x = []
                     {{!-- let temp = new Date() --}}
                     var y
