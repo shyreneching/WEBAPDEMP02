@@ -18,6 +18,11 @@
     src: url("../fonts/Lucy_Rounded.ttf");
 }
 
+@font-face {
+    font-family: "Brown";
+    src: url("fonts/brown-regular.ttf");
+}
+
 html,
 body {
     padding: 0px;
@@ -218,10 +223,10 @@ button:focus {
     margin-top: 0vw;
     margin-bottom: 0.5vw;
     width: 95%;
-    height: 4.5vw;
+    height: 6vw;
     background-color: #fff4c4;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-content: center;
     align-items: center;
 }
@@ -235,6 +240,28 @@ button:focus {
     position: inherit;
     top: 1.5vw;
     left: 8%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.path {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    top: 2vw;
+    left: 9%;
+    margin: 0px;
+    padding: 0px;
+    width: 90%;
+    position: inherit;
+    height: 80%;
+    font-size: 1.5vw;
+    font-family: "Brown";
+    color: #5a4c12;
 }
 
 .number,
