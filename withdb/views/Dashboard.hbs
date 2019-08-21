@@ -148,16 +148,34 @@
                     {{/each}} --}}
                 </div>
                 <script>
+
+                    $("#day").click(()=>{
+                        $("#day_dets").css("display", "flex")
+                        $("#week_dets").css("display", "none")
+                        $("#all_time_dets").css("display", "none")
+                    })
+                    $("#week").click(()=>{
+                        $("#day_dets").css("display", "none")
+                        $("#week_dets").css("display", "flex")
+                        $("#all_time_dets").css("display", "none")
+                    })
+                    $("#all_time").click(()=>{
+                        $("#day_dets").css("display", "none")
+                        $("#week_dets").css("display", "none")
+                        $("#all_time_dets").css("display", "flex")
+                    })
+
                     var x = []
-                    let temp = new Date();
+                    {{!-- let temp = new Date() --}}
                     var y
                     {{#each leaderboard}}
-                    temp.setTime({{date}})
+                    let abc{{_id}} = new Date()
+                    abc{{_id}}.setTime({{date}})
                     y = ("{{path}}").split(",")
                     x.push({
                         username: "{{username}}",
                         time: {{time}},
-                        date: temp,
+                        date: abc{{_id}},
                         path: y
                     })
                     {{/each}}
