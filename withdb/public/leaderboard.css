@@ -247,6 +247,10 @@ button:focus {
     height: 80%;
 }
 
+li {
+    padding-right: 1.5vw;
+}
+
 .peth {
     display: flex;
     flex-direction: row;
