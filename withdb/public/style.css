@@ -238,7 +238,7 @@ button:focus {
   height: 8vw;
   font-size: 5vw;
   text-align: center;
-  padding-top: 0.8vw;
+  padding-top: 1.8vw;
   margin: 0px auto;
   position: absolute;
   top: 20vw;
@@ -259,14 +259,14 @@ button:focus {
   from {
     width: 20vw;
     height: 8vw;
-    font-size: 5vw;
+    font-size: 4vw;
     top: 20vw;
   }
 
   to {
     width: 21vw;
     height: 9vw;
-    font-size: 5.5vw;
+    font-size: 4.5vw;
     top: 19.8vw;
     left: 33.5vw;
   }
@@ -438,6 +438,8 @@ button:focus {
 
 #article-title a::before {
   content: "current article";
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(56, 56, 56);
   position: absolute;
   font-size: 1.5vw;
   transform: translate(2px, -13px);
@@ -446,6 +448,8 @@ button:focus {
 
 #goal-title a::after {
   content: "end article";
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(56, 56, 56);
   position: absolute;
   font-size: 1.5vw;
   transform: translate(-60px, 65px);
@@ -518,6 +522,7 @@ button:focus {
   padding: 4px 5px;
   font-size: 1.5vw;
   transition: background-color 0.5s ease;
+  transition: 300ms;
   cursor: pointer;
   border: 2px solid rgba(0, 0, 0, 0);
   text-decoration: underline;
@@ -528,7 +533,9 @@ button:focus {
 #articles-wrapper li:hover {
   transition: background-color 0.04s ease;
   border-radius: 1vw;
-  -webkit-animation: text-fall 3s 2.5s ease-in-out both;
+  font-family: "Youre Gone";
+  transition: 300ms;
+  /* -webkit-animation: text-fall 3s 2.5s ease-in-out both; */
 }
 
 @-webkit-keyframes text-fall {
@@ -551,13 +558,13 @@ button:focus {
 
   }
 
-  30% {
+  /* 30% {
     -webkit-transform: rotate3d(0, 0, 1, 115deg);
     transform: rotate3d(0, 0, 1, 115deg);
 
-  }
+  } */
 
-  40% {
+  /* 40% {
 
     -webkit-transform: rotate3d(0, 0, 1, 85deg);
     transform: rotate3d(0, 0, 1, 85deg);
@@ -583,7 +590,7 @@ button:focus {
     opacity: 0;
     transform: rotateZ(102.5deg) translate3d(400px, 0, 0);
 
-  }
+  } */
 }
 
 
@@ -608,13 +615,13 @@ button:focus {
 
   }
 
-  30% {
+  /* 30% {
     -webkit-transform: rotate3d(0, 0, 1, 115deg);
     transform: rotate3d(0, 0, 1, 115deg);
 
-  }
+  } */
 
-  40% {
+  /* 40% {
 
     -webkit-transform: rotate3d(0, 0, 1, 85deg);
     transform: rotate3d(0, 0, 1, 85deg);
@@ -640,7 +647,7 @@ button:focus {
     opacity: 0;
     transform: rotateZ(102.5deg) translate3d(400px, 0, 0);
 
-  }
+  } */
 }
 
 li a {
@@ -677,6 +684,91 @@ li a:visited {
 
   li {
     font-size: 0.9em;
+  }
+}
+
+.current {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3.5vw;
+}
+
+.goal {
+  font-family: "Youre Gone";
+  font-size: 3.5vw;
+  -webkit-animation: color-change 1s infinite;
+  -moz-animation: color-change 1s infinite;
+  -o-animation: color-change 1s infinite;
+  -ms-animation: color-change 1s infinite;
+  animation: color-change 1s infinite;
+}
+
+@-webkit-keyframes color-change {
+  0% {
+    color: rgb(236, 135, 135);
+  }
+
+  50% {
+    color: rgb(105, 150, 219);
+  }
+
+  100% {
+    color: rgb(144, 230, 162);
+  }
+}
+
+@-moz-keyframes color-change {
+  0% {
+    color: rgb(236, 135, 135);
+  }
+
+  50% {
+    color: rgb(105, 150, 219);
+  }
+
+  100% {
+    color: rgb(144, 230, 162);
+  }
+}
+
+@-ms-keyframes color-change {
+  0% {
+    color: rgb(236, 135, 135);
+  }
+
+  50% {
+    color: rgb(105, 150, 219);
+  }
+
+  100% {
+    color: rgb(144, 230, 162);
+  }
+}
+
+@-o-keyframes color-change {
+  0% {
+    color: rgb(236, 135, 135);
+  }
+
+  50% {
+    color: rgb(105, 150, 219);
+  }
+
+  100% {
+    color: rgb(144, 230, 162);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    color: rgb(236, 135, 135);
+  }
+
+  50% {
+    color: rgb(105, 150, 219);
+  }
+
+  100% {
+    color: rgb(144, 230, 162);
   }
 }
 
@@ -811,4 +903,9 @@ li a:visited {
   font-family: 'Youre Gone';
   color: #41360c;
   font-size: 2.5vw;
+   -webkit-animation: color-change 1s infinite;
+   -moz-animation: color-change 1s infinite;
+   -o-animation: color-change 1s infinite;
+   -ms-animation: color-change 1s infinite;
+   animation: color-change 1s infinite;
 }
