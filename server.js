@@ -42,9 +42,11 @@ const urlencoder = bodyparser.urlencoded({
 
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost:27017/wikigame", {
-  useNewUrlParser: true
-}).catch(err => console.log(err))
+mongoose.connect(process.env.MONGODB_URI).catch(err => console.log(err))
+
+//mongoose.connect("mongodb://localhost:27017/wikigame", {
+//  useNewUrlParser: true
+//}).catch(err => console.log(err))
 
 app.use(express.static('public'))
 // app.use(express.static(path.join(__dirname, 'public')));
