@@ -45,26 +45,23 @@
 
   <div class="container">
     <div class="divisoria">
+      <img src="randomiser_icon.png" alt="Icon failed to Load" id="restart" class="random"></img>
       <div class="display_words">
-        <img src="randomiser_icon.png" alt="Icon failed to Load" id="restart" class="random"></img>
-        <ul class="dets">
-          <li class="starting">
-            <ul class="start">
-              <li class="st">START:</li>
-              <li class="st_word" id="startword">
-                <span id="start-help" class="start">[starting article]</span>
-              </li>
-            </ul>
-          </li>
-          <li class="targeting">
-            <ul class="target">
-              <li class="tg">TARGET:</li>
-              <li class="tg_word" id="targetword">
-                <span id="goal-help" class="target">[end article]</span>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        
+        <div id="info-wrapper">
+          <h1 style="text-align: center; margin:inherit">
+            <span id="article-title">
+              <span id="start-help" class="start">[starting article]</span>
+            </span>
+            <br>
+            <span id="point-right" style="width: 0.6vw; height: 0.6vw;">👉</span>
+            {{!-- <span id="point-goal">👍</span>
+                      <span id="point-down">👇</span> --}}
+            <span id="goal-title">
+              <span id="goal-help" class="target">[end article]</span>
+            </span>
+          </h1>
+        </div>
       </div>
     
     
