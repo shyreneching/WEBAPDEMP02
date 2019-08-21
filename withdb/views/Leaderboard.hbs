@@ -198,14 +198,34 @@
                         peth.append(ul2)
 
                         var len = daily[i].path.length
+                        var lis = [], hands = []
 
-                        var lis = [];
-                        for(var j = 0; j < len; j++){
-                            var x;
-                            lis.push(x)
+                        var z;
+                        lis.push(z)
+                        lis[0] = document.createElement("li")
+                        $(lis[0]).text(daily[i].path[0])
+                        //$(lis[j]).append(hand)
+                        ul2.append(lis[0])
+
+                        {{!-- var hand = document.createElement("img");
+                        hand.src = "hand_cursor_point_right.png";
+                        hand.style.width = "2vw";
+                        hand.style.height = "2vw"; --}}
+
+                        for(var j = 1; j < len; j++){
+                            var z, ay;
+                            lis.push(z)
+                            hands.push(ay)
+                            hands[j - 1] = document.createElement("img");
+                            hands[j-1].src = "hand_cursor_point_right.png";
+                            hands[j-1].style.width = "2vw";
+                            hands[j-1].style.height = "2vw";
+                            ul2.append(hands[j-1])
                             lis[j] = document.createElement("li")
                             $(lis[j]).text(daily[i].path[j])
+                            //$(lis[j]).append(hand)
                             ul2.append(lis[j])
+                            
                         }
                     }
 
@@ -251,12 +271,31 @@
 
                         var len = monthly[i].path.length
 
-                        var lis = [];
-                        for(var j = 0; j < len; j++){
-                            var x;
-                            lis.push(x)
+                        var lis = [], hands = [];
+                        var z;
+                        lis.push(z)
+                        lis[0] = document.createElement("li")
+                        $(lis[0]).text(monthly[i].path[0])
+                        //$(lis[j]).append(hand)
+                        ul2.append(lis[0])
+
+                        {{!-- var hand = document.createElement("img");
+                        hand.src = "hand_cursor_point_right.png";
+                        hand.style.width = "2vw";
+                        hand.style.height = "2vw"; --}}
+
+                        for(var j = 1; j < len; j++){
+                            var z, ay;
+                            lis.push(z)
+                            hands.push(ay)
+                            hands[j - 1] = document.createElement("img");
+                            hands[j-1].src = "hand_cursor_point_right.png";
+                            hands[j-1].style.width = "2vw";
+                            hands[j-1].style.height = "2vw";
+                            ul2.append(hands[j-1])
                             lis[j] = document.createElement("li")
                             $(lis[j]).text(monthly[i].path[j])
+                            //$(lis[j]).append(hand)
                             ul2.append(lis[j])
                             
                         }
@@ -304,16 +343,29 @@
 
                         var len = x[i].path.length
 
-                        var lis = [];
+                        var lis = [], hands = [];
 
-                        var hand = document.createElement("img");
+                        var z;
+                        lis.push(z)
+                        lis[0] = document.createElement("li")
+                        $(lis[0]).text(x[i].path[0])
+                        //$(lis[j]).append(hand)
+                        ul2.append(lis[0])
+
+                        {{!-- var hand = document.createElement("img");
                         hand.src = "hand_cursor_point_right.png";
                         hand.style.width = "2vw";
-                        hand.style.height = "2vw";
+                        hand.style.height = "2vw"; --}}
 
-                        for(var j = 0; j < len; j++){
-                            var z;
+                        for(var j = 1; j < len; j++){
+                            var z, ay;
                             lis.push(z)
+                            hands.push(ay)
+                            hands[j - 1] = document.createElement("img");
+                            hands[j-1].src = "hand_cursor_point_right.png";
+                            hands[j-1].style.width = "2vw";
+                            hands[j-1].style.height = "2vw";
+                            ul2.append(hands[j-1])
                             lis[j] = document.createElement("li")
                             $(lis[j]).text(x[i].path[j])
                             //$(lis[j]).append(hand)
