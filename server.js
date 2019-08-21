@@ -63,6 +63,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.use(require("./controller"));
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Now listening in port 3000...")
 })
+
