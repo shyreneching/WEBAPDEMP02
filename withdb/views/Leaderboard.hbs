@@ -188,6 +188,25 @@
                         li4.className = "points"
                         $(li4).text(Math.floor(daily[i].time / 1000 / 60) + " min " + Math.round(daily[i].time/1000%60) + " sec")
                         ul.append(li4)
+
+                        var peth = document.createElement("div")
+                        peth.className = "peth"
+                        container.append(peth)
+
+                        var ul2 = document.createElement("ul")
+                        ul2.className = "details"
+                        peth.append(ul2)
+
+                        var len = daily[i].path.length
+
+                        var lis = [];
+                        for(var j = 0; j < len; j++){
+                            var x;
+                            lis.push(x)
+                            lis[j] = document.createElement("li")
+                            $(lis[j]).text(daily[i].path[j])
+                            ul2.append(lis[j])
+                        }
                     }
 
                     for(var i = 0; i < monthly.length; i++) {
@@ -221,10 +240,29 @@
                         li4.className = "points"
                         $(li4).text(Math.floor(monthly[i].time / 1000 / 60) + " min " + Math.round(monthly[i].time/1000%60) + " sec")
                         ul.append(li4)
+
+                        var peth = document.createElement("div")
+                        peth.className = "peth"
+                        container.append(peth)
+
+                        var ul2 = document.createElement("ul")
+                        ul2.className = "details"
+                        peth.append(ul2)
+
+                        var len = monthly[i].path.length
+
+                        var lis = [];
+                        for(var j = 0; j < len; j++){
+                            var x;
+                            lis.push(x)
+                            lis[j] = document.createElement("li")
+                            $(lis[j]).text(monthly[i].path[j])
+                            ul2.append(lis[j])
+                        }
                     }
 
                     for(var i = 0; i < x.length; i++) {
-                        var container, ul, li1, li2, li3, li4
+                        var container, ul, li1, li2, li3, li4, ul2, peth
                         container = document.createElement("div")
                         container.className = "first"
                         $(container).css("background-color", "#fdf7db")
@@ -254,6 +292,25 @@
                         li4.className = "points"
                         $(li4).text(Math.floor(x[i].time / 1000 / 60) + " min " + Math.round(x[i].time/1000%60) + " sec")
                         ul.append(li4)
+
+                        peth = document.createElement("div")
+                        peth.className = "peth"
+                        container.append(peth)
+
+                        ul2 = document.createElement("ul")
+                        ul2.className = "details"
+                        peth.append(ul2)
+
+                        var len = x[i].path.length
+
+                        var lis = [];
+                        for(var j = 0; j < len; j++){
+                            var z;
+                            lis.push(z)
+                            lis[j] = document.createElement("li")
+                            $(lis[j]).text(x[i].path[j])
+                            ul2.append(lis[j])
+                        }
                     }
                 </script>
             </div>
