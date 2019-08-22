@@ -79,7 +79,7 @@ router.get('/', (request, response) => {
           res.send(err)
       }else if(doc){
           console.log(doc)
-          res.render("profile.hbs", {
+          res.render("Profile.hbs", {
             username: doc.username,
             password: doc.password,
             leaderboard: temp
