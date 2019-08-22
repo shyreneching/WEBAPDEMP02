@@ -16,6 +16,7 @@ const {
   Leaderboard
 } = require("../model/leaderboard.js")
 
+app.set('views', path.join(__dirname, 'views'));
 const app = express()
 const urlencoder = bodyparser.urlencoded({
   extended: false
