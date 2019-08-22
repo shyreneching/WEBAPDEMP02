@@ -44,7 +44,9 @@ const urlencoder = bodyparser.urlencoded({
 mongoose.Promise = global.Promise
 //mongoose.connect( process.env.MONGOLAB_URI).catch(err => console.log(err))
 
-mongoose.connect("mongodb://localhost:27017/wikigame", {
+const MONGOLAB_URI = process.env.MONGOLAB_URI || "mongodb://localhost:27017/wikigame" 
+
+mongoose.connect(MONGOLAB_URI, {
   useNewUrlParser: true
 }).catch(err => console.log(err))
 
