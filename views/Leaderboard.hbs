@@ -162,7 +162,7 @@
                         container = document.createElement("div")
                         container.className = "first"
                         $(container).css("background-color", "#fdf7db")
-                        $(container).css("height", "5vw")
+                        $(container).css("height", "auto")
                         $("#day_dets").append(container)
 
                         ul = document.createElement("ul")
@@ -171,7 +171,7 @@
 
                         li1 = document.createElement("li")
                         li1.className = "number"
-                        $(li1).text((i + 1) + ".")
+                        $(li1).text((i + 1))
                         ul.append(li1)
 
                         li2 = document.createElement("li")
@@ -194,7 +194,7 @@
                         container.append(peth)
 
                         var ul2 = document.createElement("ul")
-                        ul2.className = "details"
+                        ul2.className = "pathdiv"
                         peth.append(ul2)
 
                         var len = daily[i].path.length
@@ -235,7 +235,7 @@
                         container = document.createElement("div")
                         container.className = "first"
                         $(container).css("background-color", "#fdf7db")
-                        $(container).css("height", "5vw")
+                        $(container).css("height", "auto")
                         $("#week_dets").append(container)
 
                         ul = document.createElement("ul")
@@ -244,7 +244,7 @@
 
                         li1 = document.createElement("li")
                         li1.className = "number"
-                        $(li1).text((i + 1) + ".")
+                        $(li1).text((i + 1))
                         ul.append(li1)
 
                         li2 = document.createElement("li")
@@ -267,7 +267,7 @@
                         container.append(peth)
 
                         var ul2 = document.createElement("ul")
-                        ul2.className = "details"
+                        ul2.className = "pathdiv"
                         peth.append(ul2)
 
                         var len = monthly[i].path.length
@@ -307,7 +307,7 @@
                         container = document.createElement("div")
                         container.className = "first"
                         $(container).css("background-color", "#fdf7db")
-                        $(container).css("height", "5vw")
+                        $(container).css("height", "auto")
                         $("#all_time_dets").append(container)
 
                         ul = document.createElement("ul")
@@ -316,7 +316,7 @@
 
                         li1 = document.createElement("li")
                         li1.className = "number"
-                        $(li1).text((i + 1) + ".")
+                        $(li1).text((i + 1))
                         ul.append(li1)
 
                         li2 = document.createElement("li")
@@ -339,7 +339,7 @@
                         container.append(peth)
 
                         ul2 = document.createElement("ul")
-                        ul2.className = "details"
+                        ul2.className = "pathdiv"
                         peth.append(ul2)
 
                         var len = x[i].path.length
@@ -349,7 +349,6 @@
                         var z;
                         lis.push(z)
                         lis[0] = document.createElement("li")
-                        lis.className = "list"
                         $(lis[0]).text(x[i].path[0])
                         //$(lis[j]).append(hand)
                         ul2.append(lis[0])

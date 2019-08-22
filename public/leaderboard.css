@@ -220,53 +220,100 @@ button:focus {
 .third,
 .fourth,
 .fifth {
-    margin-top: 0vw;
+    display: inline-flex;
+    clear: both;
     margin-bottom: 0.5vw;
-    width: 95%;
-    height: 6vw;
+    width: 93%;
+    /* min-height: 7vw; */
+    height: auto;
     background-color: #fff4c4;
-    display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     align-content: center;
     align-items: center;
+    overflow: hidden;
+    scrollbar-width: thin;
+    padding: 0.1vw 0.1vw 0.1vw 0.1vw;
+    position: relative;
 }
 
 .details {
     list-style-type: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin: 0px;
     padding: 0px;
     width: 100%;
-    position: inherit;
-    top: 1.5vw;
-    left: 8%;
+    position: relative;
+    top: 2vw;
+    left: 1vw;
+    /* height: inherit; */
     display: flex;
     flex-direction: row;
-    align-content: center;
-    align-items: center;
-    height: 80%;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    /* align-content: center;
+    align-items: center; */
+    bottom: 2vw;
 }
 
-list {
-    padding-right: 1.5vw;
+.pathdiv {
+    list-style-type: none;
+    /* overflow: hidden; */
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    position: relative;
+    top:inherit;
+    left: inherit;
+    bottom: inherit;
+    /* min-height: 5vw; */
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 0px;
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    /* align-content: center;
+    align-items: center; */
+    bottom: 2vw;
+}
+
+.pathdiv li {
+    padding-right:1.5vw;
     padding-left: 1vw;
 }
 
 .peth {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
-    align-content: center;
-    align-items: center;
-    top: 2vw;
-    left: 9%;
-    margin: 0px;
+    flex-basis: 0px;
+    flex-grow: 1;
+    /* flex-wrap: wrap;
+    flex-grow: 1; */
+    /* align-content: center;
+    align-items: center; */
+    top: 1.5vw;
+    left: 0vw;
+    bottom: 2vw;
+    margin-bottom: 2.5vw;
     padding: 0px;
     width: 90%;
-    position: inherit;
-    height: 80%;
+    min-height: 8vw;
+    height: auto;
+    position: relative;
     font-size: 1.5vw;
     font-family: "Brown";
     color: #5a4c12;
+    text-overflow: ellipsis;
+    -ms-overflow-style: scrollbar;
+    overflow-wrap: normal;
+    overflow-inline: scroll;
+    overflow: hidden;
+    /* overflow: scroll; */
+    /* margin-top: 1vw;
+    margin-bottom: 1vw; */
 }
 
 .number,
