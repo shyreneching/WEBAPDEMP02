@@ -534,6 +534,7 @@ button:focus {
   transition: background-color 0.04s ease;
   border-radius: 1vw;
   font-family: "Youre Gone";
+  font-size: 1.2vw;
   transition: 300ms;
   /* -webkit-animation: text-fall 3s 2.5s ease-in-out both; */
 }
