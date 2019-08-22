@@ -51,7 +51,7 @@ mongoose.connect(MONGOLAB_URI, {
 }).catch(err => console.log(err))
 
 app.use(express.static('public'))
-app.set('views', path.join(__dirname, 'views'));
+
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: "le secret",
@@ -64,7 +64,7 @@ app.use(session({
 }))
 app.use(cookieparser())
 app.set('view engine', 'hbs');
-// app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('views', 'views');
 app.use(require("./controller"));
 
