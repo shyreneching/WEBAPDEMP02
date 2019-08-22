@@ -21,7 +21,7 @@ const urlencoder = bodyparser.urlencoded({
   extended: false
 })
 const router = express.Router();
-app.set('views', path.join(__dirname, 'views'));
+
 router.get('/', (request, response) => {
     Leaderboard.find({},
     //   ['username','time','date'],

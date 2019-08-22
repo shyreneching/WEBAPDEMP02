@@ -51,6 +51,7 @@ mongoose.connect(MONGOLAB_URI, {
 }).catch(err => console.log(err))
 
 app.use(express.static('public'))
+app.set('views', path.join(__dirname, 'views'));
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: "le secret",
