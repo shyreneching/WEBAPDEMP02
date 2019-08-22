@@ -70,6 +70,7 @@ button:focus {
     padding-left: 20px;
     letter-spacing: 1px;
     margin-top: 2.5vw;
+    text-align: center;
 }
 
 .warning {

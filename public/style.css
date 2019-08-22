@@ -89,7 +89,7 @@ button:focus {
 
 .navlink {
   font-family: 'Montserrat Light';
-  color: rgb(94, 69, 37);
+  color: rgb(153, 113, 61);
   font-size: 1.5vw;
   padding-right: 3vw;
   display: inline-block;
@@ -240,14 +240,8 @@ button:focus {
   text-align: center;
   padding-top: 1.8vw;
   margin: 0px auto;
-  position: absolute;
-  top: 20vw;
   align-self: center;
   left: 34vw;
-  -webkit-animation-name: startlargerbtn;
-  -webkit-animation-duration: 600ms;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
 }
 
 .color-link a {
@@ -255,20 +249,31 @@ button:focus {
   color: #000000;
 }
 
+#close-help {
+  position: relative;
+  top: 4vw;
+  align-self: center;
+  left: 1vw;
+  -webkit-animation-name: startlargerbtn;
+  -webkit-animation-duration: 600ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+}
+
 @-webkit-keyframes startlargerbtn {
   from {
     width: 20vw;
     height: 8vw;
     font-size: 4vw;
-    top: 20vw;
+    top: 4vw;
   }
 
   to {
     width: 21vw;
     height: 9vw;
     font-size: 4.5vw;
-    top: 19.8vw;
-    left: 33.5vw;
+    top: 3.8vw;
+    left: 0.8vw;
   }
 }
 
@@ -387,6 +392,19 @@ button:focus {
 #winning-wrapper ul {
   list-style-type: none;
   padding: 0;
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  -webkit-box-pack: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  flex-direction: column;
+  align-self: center;
+  position: relative;
+  width: inherit;
 }
 
 #winning-wrapper li {
@@ -395,14 +413,51 @@ button:focus {
   border: 2px solid rgba(0, 0, 0, 0);
   border-radius: 6px;
   margin: 7px 0;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  /* width: 100%; */
+  /* left: 5vw; */
+}
+
+.pith li {
+  text-align: center;
+  width: 100%;
 }
 
 #replay {
   margin-top: 5vw;
+  margin-bottom: 5vw;
   margin: 0px auto;
+  top: 5vw;
+  position: relative;
+  align-content: center;
+  text-align: center;
+  align-self: center;
+  left: inherit;
+  padding-top: 1vw;
+  just
+}
+
+@-webkit-keyframes replaylargerbtn {
+  from {
+    width: 20vw;
+    height: 8vw;
+    font-size: 4vw;
+    top: 50vw;
+    left: 35vw;
+  }
+
+  to {
+    width: 21vw;
+    height: 9vw;
+    font-size: 4.5vw;
+    top: 54.8vw;
+    left: 34.8vw;
+  }
 }
 
 /* Article & Game info */
@@ -534,7 +589,7 @@ button:focus {
   transition: background-color 0.04s ease;
   border-radius: 1vw;
   font-family: "Youre Gone";
-  font-size: 1.2vw;
+  font-size: 2vw;
   transition: 300ms;
   /* -webkit-animation: text-fall 3s 2.5s ease-in-out both; */
 }

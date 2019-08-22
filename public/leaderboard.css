@@ -64,7 +64,7 @@ button:focus {
 
 .navlink {
     font-family: 'Montserrat Light';
-    color: rgb(94, 69, 37);
+    color: rgb(153, 113, 61);
     font-size: 1.5vw;
     padding-right: 3vw;
     display: inline-block;
@@ -247,7 +247,7 @@ button:focus {
     height: 80%;
 }
 
-li {
+list {
     padding-right: 1.5vw;
     padding-left: 1vw;
 }

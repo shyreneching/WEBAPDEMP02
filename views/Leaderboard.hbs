@@ -30,10 +30,10 @@
         <img src="the_wiki_game_logo_smaller_spaces.png" alt="Logo Failed to Load"
             style="width: 7.5vw; height:3vw; top: 0vw; cursor: pointer;" onclick="window.location.href = '/dashboard'">
         <ul class="navul">
-            <li class="navlink" onclick="window.location.href = '/dashboard'">HOME</li>
+            <li class="navlink" onclick="window.location.href = '/dashboard'">
+                HOME</li>
             <li class="navlink">|</li>
-            <li class="navlink" style="color: #46380b; font-weight: bold"
-                onclick="window.location.href = '/leaderboard'">LEADERBOARD</li>
+            <li class="navlink" style="color: #201a06; font-weight:bold" onclick="window.location.href = '/leaderboard'">LEADERBOARD</li>
             <li class="navlink">|</li>
             <li class="navlink" id="profile">{{nav}}</li>
         </ul>
@@ -349,6 +349,7 @@
                         var z;
                         lis.push(z)
                         lis[0] = document.createElement("li")
+                        lis.className = "list"
                         $(lis[0]).text(x[i].path[0])
                         //$(lis[j]).append(hand)
                         ul2.append(lis[0])
